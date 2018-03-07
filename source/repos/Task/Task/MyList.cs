@@ -11,10 +11,11 @@ namespace Task
         public List<T> myList = new List<T>();      
         public T GetElementAt(int x)
         {
-            T res =  myList[x];
-            Console.WriteLine("------------------");
-            Console.WriteLine("element at " + x + " is " + res);
-            return res;
+            //T res =  myList[x];
+            //Console.WriteLine("------------------");
+            //Console.WriteLine("element at " + x + " is " + res);
+            //return res;
+            throw new NotImplementedException();
         }
 
         public void Add(T x)
@@ -33,7 +34,6 @@ namespace Task
         public bool Remove(T x)
         {
             Console.WriteLine("------------------");
-
             for(int i=0;i<myList.Count;i++)
             {
                 if(myList[i].ToString() == x.ToString())

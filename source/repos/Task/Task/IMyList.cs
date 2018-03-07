@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 namespace Task
 {
      interface IMyList<T>
-    {
+     {
          T GetElementAt(int x);
          void Add(T x);
          bool Remove(T x);
          void Print(); 
 
-    }
+     }
 }

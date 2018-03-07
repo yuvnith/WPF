@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace Task
 {
-    public class TypeSafeArrayList : ArrayList
+    public class TypeSafeArrayList<T> : ArrayList
     {
         String type;
+        int count ;
         public ArrayList myArrayList = new ArrayList();
-        public void add(object val)
+        public void add(T val)
         {
             if (myArrayList.Count == 0)
             {

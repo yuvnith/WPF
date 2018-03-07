@@ -8,39 +8,46 @@ namespace Task
 {
     public class MaterialCollection : List<Material>
     {
-        public List<Material> matList = new List<Material>();
+        
+        
         public Material GetMaterialWithMaxPrice()
         {
-            int max = 0,j=0;           
-            for(int i=0;i<matList.Count;i++)
+            int max = 0;
+            Material mat = null;
+            var enumerator = GetEnumerator();
+            while (enumerator.MoveNext())
             {
-                if (matList[i].Price > max)
+                if (max < enumerator.Current.Price)
                 {
-                    max = matList[i].Price;
-                    j = i;
+                    max = enumerator.Current.Price;
+                    mat = enumerator.Current;
                 }
             }
-            return matList[j];
+            return mat;
         }
+
+       
 
         public Material FindMatertialWithId(string id)
         {
-            for (int i = 0; i < matList.Count; i++)
+            Material mat = null;
+            var enumerator = GetEnumerator();
+            while (enumerator.MoveNext())
             {
-                if (matList[i].Id == id)
+                if (enumerator.Current.Id == id)
                 {
-                    return matList[i];
+                    mat = enumerator.Current;
                 }
             }
-
-            return null;
-      
+            return mat;
+       
         }
 
     }
+
     public class Material
     {
-        public Material(String id,int price,int stock)
+        public Material(String id, int price, int stock)
         {
             this.Id = id;
             this.Price = price;
@@ -54,5 +61,6 @@ namespace Task
 
         public int Stock { get; set; }
     }
+
 
 }
