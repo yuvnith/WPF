@@ -25,14 +25,10 @@ namespace Task
             //Console.WriteLine(" ");
             //int a = MyListObject.GetElementAt(2);
             //Console.WriteLine(a);
-
-
             //Console.WriteLine(" ");
-
-
             //Console.WriteLine("----------------------------------------------------------------------");
 
-            MaterialCollection MaterialCollectionObject = new MaterialCollection();
+            //MaterialCollection MaterialCollectionObject = new MaterialCollection();
             //id price stock
             //Material mat1 = new Material("0", 100, 200);
             //Material mat2 = new Material("1", 120, 300);
@@ -85,16 +81,46 @@ namespace Task
             //    var matSiteRelation = new MaterialSiteRelation() { site = site, material = mat1, Quantity = randomNumberGenerator.Next(1, 100) };
             //    data.Add(matSiteRelation);
             //}
+
             //var totalQuantiy = new SiteHelper().GetTotalQuantityOfMaterial("4", data);
             //var totalBudget = new SiteHelper().GetTotalBudgetAtSite("2", data);
             //Console.WriteLine(totalBudget + "");
             //Console.WriteLine(totalQuantiy);
-            //Console.ReadKey();
 
-            
+
+
 
             //CusomizedCollection obj1 = new CusomizedCollection();
             //obj1.Add(String.Empty);
+
+
+            //MaterialImplementation obj = new MaterialImplementation();
+
+            //Materials materials =new Materials()
+            //{
+            //    Class = ClassEnum.Acc , Description = "REDUCERS CONCENTRIC 150 MM" , Grp = "val",
+            //    MaterialId = "100002", MaterialType = "P" , Smc = 4,Type = "DIN2616 BWD",Units = UnitEnum.Pcs
+            //};
+
+
+            //obj.Add(materials);
+
+            //obj.Display();
+
+            //Materials find = obj.Find("100001");
+
+            //Console.WriteLine(find != null ? "  Found !!" : " not found");
+
+
+
+            ReadingCsvFile readingCsvFile = new ReadingCsvFile();
+            Console.Write("enter id to search :");
+            string id2 = Console.ReadLine();
+            readingCsvFile.Search(id2);
+
+            //readingCsvFile.write();
+
+            Console.ReadKey();
 
         }
     }
