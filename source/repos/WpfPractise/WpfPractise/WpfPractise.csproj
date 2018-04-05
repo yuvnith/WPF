@@ -54,6 +54,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter .cs" />
+    <Compile Include="Employee.cs" />
+    <Compile Include="TreeView.xaml.cs">
+      <DependentUpon>TreeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Validations.xaml.cs">
+      <DependentUpon>Validations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ValueConverter.xaml.cs">
+      <DependentUpon>ValueConverter.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -66,6 +77,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="TreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Validations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ValueConverter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

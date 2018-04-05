@@ -37,5 +37,11 @@ namespace WpfPractise
         {
 
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Validations obj = new Validations();
+            obj.ShowDialog();
+        }
     }
 }

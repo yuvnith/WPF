@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfPractise"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen">
     <Grid>
         <Button Width="200" Height="200" Background="BurlyWood" Click="Button_Click" Margin="16,22,301,97">
             <Button.Template>
@@ -45,7 +45,7 @@
                 <Button Height="20" Width="60">Click</Button>
             </StackPanel>
         </GroupBox>
-        <Button Content="Validations" HorizontalAlignment="Left" Margin="35,284,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Validations" HorizontalAlignment="Left" Margin="35,284,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
 
 
 
