@@ -13,7 +13,8 @@
         <StackPanel Margin="10" >
             <TextBlock>Age:</TextBlock>
             <TextBox Name="Age"></TextBox>
-            <CheckBox Content="Teen" IsChecked="{Binding ElementName=Age,Path=Text,Converter={StaticResource Converter}}"></CheckBox>
+            <CheckBox Name="CheckBox" Content="Teen" IsChecked="{Binding ElementName=Age,Path=Text,Converter={StaticResource Converter}}"></CheckBox>
+     
         </StackPanel>
     </Grid>
 </Window>

@@ -6,15 +6,40 @@
         xmlns:local="clr-namespace:WpfPractise"
         mc:Ignorable="d"
         Title="TreeView" Height="300" Width="300">
-    <Grid>
-        <TreeView>
-            <TreeViewItem Header="Departments">
-                <TreeViewItem Header="CSE"></TreeViewItem>
-                <TreeViewItem Header="ECE"></TreeViewItem>
-                <TreeViewItem Header="EEE"></TreeViewItem>
-                <TreeViewItem Header="MECH"></TreeViewItem>
-            </TreeViewItem>
+    
+     <Window.Resources>
+        <!--<DataTemplate DataType="{x:Type local:Students}">
+            <TextBlock Text="{Binding Name}"></TextBlock>
+      </DataTemplate>        
 
-        </TreeView>
+
+        <DataTemplate DataType="{x:Type local:Details}">
+            <TextBlock Text="{Binding Pin}"></TextBlock>
+        </DataTemplate>        
+
+         <DataTemplate DataType="{x:Type local:Subjects}">
+             <TextBlock Text="{Binding Science}"></TextBlock>
+         </DataTemplate>-->
+
+        <DataTemplate DataType="{x:Type local:Subjects}">
+            <TextBlock Text="{Binding Science}"></TextBlock>
+        </DataTemplate>
+        <HierarchicalDataTemplate
+             DataType="{x:Type local:Details}"
+             ItemsSource="{Binding Marks}">
+            <TextBlock Text="Marks"></TextBlock>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate
+             DataType="{x:Type local:Students}"
+             ItemsSource="{Binding det}">
+             <TextBlock Text="{Binding Name}"></TextBlock>
+         </HierarchicalDataTemplate>
+
+
+    </Window.Resources>
+    
+    <Grid>
+        <TreeView x:Name="MyTree" ItemsSource="{Binding}"></TreeView>
     </Grid>
 </Window>

@@ -21,7 +21,12 @@ namespace WpfPractise
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            
+                if ((bool) value == true)
+                    return "teen";
+                else
+                    return "adult";
+            
         }
     }
 }

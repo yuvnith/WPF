@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,9 +23,10 @@ namespace WpfPractise
     {
         public MainWindow()
         {
+            
             InitializeComponent();
             one.SpellCheck.IsEnabled = true;
-
+            listbox1.Items.Add(123);
 
         }
 
@@ -42,6 +44,12 @@ namespace WpfPractise
         {
             Validations obj = new Validations();
             obj.ShowDialog();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+             IList value = listbox1.SelectedItems;
+            MessageBox.Show(value[0]+" ");
         }
     }
 }

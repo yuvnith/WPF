@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfPractise"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Button Width="200" Height="200" Background="BurlyWood" Click="Button_Click" Margin="16,22,301,97">
+        Title="MainWindow" Height="350" Width="819" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,29,17">
+        <Button Width="200" Height="200" Background="BurlyWood" Click="Button_Click" Margin="17,16,565,86">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Grid>
@@ -33,10 +33,10 @@
                 <Image Source="C:\Users\vamshikrishna.pabba\Desktop\Capture.PNG" RenderTransformOrigin="1.6,0.611"/>
             </StackPanel>
         </Button>
-        <GroupBox Width="150 " Margin="263,133,104,109">
+        <GroupBox Width="150 " Margin="278,100,354,142">
             <GroupBox.Header>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock> Hello </TextBlock>
+                    <TextBlock> Hello</TextBlock>
                     <Image Source="C:\Users\vamshikrishna.pabba\Desktop\Capture.PNG"  Height="5" Width="5"/>
                 </StackPanel>
             </GroupBox.Header>
@@ -47,7 +47,23 @@
         </GroupBox>
         <Button Content="Validations" HorizontalAlignment="Left" Margin="35,284,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
 
-
+        <ListBox Name="listbox1" Height="100" Margin="536,87,147,115">
+            <TextBlock>one</TextBlock>
+            <TextBlock>two</TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>Name:</TextBlock>
+                <TextBox Name="name" Width="50"></TextBox>
+            </StackPanel>
+        </ListBox>
+        <Button Width="50" Height="20" Margin="585,196,147,86" Click="Button_Click_2">print</Button>
+        
+        <TreeView Height="100" Width="80" Margin="437,174,265,28">
+            <TreeViewItem Header="one">
+                <TreeViewItem Header="o"></TreeViewItem>
+                <TreeViewItem Header="n"></TreeViewItem>
+                <TreeViewItem Header="e"></TreeViewItem>
+            </TreeViewItem>
+        </TreeView>
 
     </Grid>
 </Window>

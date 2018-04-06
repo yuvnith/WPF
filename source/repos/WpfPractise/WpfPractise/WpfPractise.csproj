@@ -56,8 +56,17 @@
     </ApplicationDefinition>
     <Compile Include="Converter .cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="EventRouting.xaml.cs">
+      <DependentUpon>EventRouting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListBox.xaml.cs">
+      <DependentUpon>ListBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TreeView.xaml.cs">
       <DependentUpon>TreeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TreeViewBinding.xaml.cs">
+      <DependentUpon>TreeViewBinding.xaml</DependentUpon>
     </Compile>
     <Compile Include="Validations.xaml.cs">
       <DependentUpon>Validations.xaml</DependentUpon>
@@ -65,6 +74,14 @@
     <Compile Include="ValueConverter.xaml.cs">
       <DependentUpon>ValueConverter.xaml</DependentUpon>
     </Compile>
+    <Page Include="EventRouting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -78,6 +95,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="TreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TreeViewBinding.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
