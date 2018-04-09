@@ -1,0 +1,24 @@
+﻿<Window x:Class="WpfPractise.CopyCommand"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfPractise"
+        mc:Ignorable="d"
+        Title="CopyCommand" Height="300" Width="300">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="29,77,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Name="tb1"/>
+        <Button Command="ApplicationCommands.Copy" Content="copy" Name="bt1"  HorizontalAlignment="Left" Margin="171,77,0,0" VerticalAlignment="Top" Width="75" />
+        <Button Command="ApplicationCommands.Paste" Content="Paste" Name="bt2" HorizontalAlignment="Left" Margin="29,131,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox Name="tb2" HorizontalAlignment="Left" Height="23" Margin="126,128,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+
+        <DockPanel Margin="0,0,0,249">
+            <Menu DockPanel.Dock="Top" Height="42" Margin="0,0,-6,0">
+                <MenuItem Header="_Edit">
+                    <MenuItem Command="Copy" Header="_Copy"></MenuItem>
+                    <MenuItem Command="Paste" Header="_Paste"></MenuItem>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+    </Grid>
+</Window>

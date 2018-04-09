@@ -6,39 +6,27 @@
         xmlns:local="clr-namespace:WpfPractise"
         mc:Ignorable="d"
         Title="TreeView" Height="300" Width="300">
-    
-     <Window.Resources>
-        <!--<DataTemplate DataType="{x:Type local:Students}">
-            <TextBlock Text="{Binding Name}"></TextBlock>
-      </DataTemplate>        
 
+    <Window.Resources>
 
-        <DataTemplate DataType="{x:Type local:Details}">
-            <TextBlock Text="{Binding Pin}"></TextBlock>
-        </DataTemplate>        
-
-         <DataTemplate DataType="{x:Type local:Subjects}">
-             <TextBlock Text="{Binding Science}"></TextBlock>
-         </DataTemplate>-->
-
-        <DataTemplate DataType="{x:Type local:Subjects}">
-            <TextBlock Text="{Binding Science}"></TextBlock>
-        </DataTemplate>
         <HierarchicalDataTemplate
-             DataType="{x:Type local:Details}"
-             ItemsSource="{Binding Marks}">
-            <TextBlock Text="Marks"></TextBlock>
+             DataType="{x:Type local:Subjects}"
+             >
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{Binding Maths}"></TextBlock>
+                <TextBlock Text="{Binding Science}"></TextBlock>
+            </StackPanel>
         </HierarchicalDataTemplate>
 
         <HierarchicalDataTemplate
              DataType="{x:Type local:Students}"
              ItemsSource="{Binding det}">
-             <TextBlock Text="{Binding Name}"></TextBlock>
-         </HierarchicalDataTemplate>
+            <TextBlock Text="{Binding Path=Name}"></TextBlock>
+        </HierarchicalDataTemplate>
 
 
     </Window.Resources>
-    
+
     <Grid>
         <TreeView x:Name="MyTree" ItemsSource="{Binding}"></TreeView>
     </Grid>

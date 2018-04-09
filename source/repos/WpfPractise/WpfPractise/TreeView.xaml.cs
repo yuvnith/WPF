@@ -36,44 +36,30 @@ namespace WpfPractise
             Students s1 = new Students()
             {
                 Name = "vamshi",
-                det = new ObservableCollection<Details>()
+                det = new ObservableCollection<Subjects>()
                 {
-                    new Details()
-                    {
-                        Age = "12",
-                        Location = "Himayathnagar",
-                        Pin = "500000",
-                        Marks = new ObservableCollection<Subjects>()
-                        {
+                    
                             new Subjects()
                             {
                                 Science = "80",
                                 Maths = "100"
                             }
-                        }
-                    }
+               
                 }
             };
             Students s2 = new Students()
             {
                 Name = "krishna",
-                det = new ObservableCollection<Details>()
+                det = new ObservableCollection<Subjects>()
                 {
-                    new Details()
-                    {
-                        Age = "10",
-                        Location = "Narayanguda",
-                        Pin = "600000",
-                        Marks = new ObservableCollection<Subjects>()
-                        {
+                    
                             new Subjects()
                             {
                                 Maths = "100",
                                 Science = "90"
 
                             }
-                        }
-                    }
+                   
                 }
 
             };
@@ -91,17 +77,11 @@ namespace WpfPractise
     public class Students
     {
         public string Name { get; set; }
-        public ObservableCollection<Details> det { get; set; }
-
-
+        public ObservableCollection<Subjects> det { get; set; }
     }
 
     public class Details
     {
-        public string Age { get; set; }
-        public string Location { get; set; }
-        public string Pin { get; set; }
-
         public ObservableCollection<Subjects> Marks { get; set; }
     }
 

@@ -46,7 +46,7 @@ namespace WpfPractise
         public void MouseDownHandler(object sender, MouseEventArgs e)
         {
             Debug.WriteLine("MouseDown: " + sender);
-            e.Handled = true;
+            e.Handled = true; 
         }
     }
 }

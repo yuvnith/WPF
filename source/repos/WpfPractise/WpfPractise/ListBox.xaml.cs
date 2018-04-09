@@ -20,14 +20,15 @@ namespace WpfPractise
     /// </summary>
     public partial class ListBox : Window
     {
-        public ObservableCollection<int> Collection;
+        public ObservableCollection<int> Collection { get; set; }
         public ListBox()
         {
             Collection = new ObservableCollection<int>(){1,2,3,4,5,6,7,8,9};
             InitializeComponent();
 
             DataContext = Collection;
-
         }
     }
+
+    
 }
