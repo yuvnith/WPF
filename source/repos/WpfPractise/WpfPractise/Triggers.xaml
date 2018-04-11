@@ -1,0 +1,41 @@
+﻿<Window x:Class="WpfPractise.Triggers"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfPractise"
+        mc:Ignorable="d"
+        Title="Triggers" Height="300" Width="300">
+    <Window.Resources>
+        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+            <Style.Triggers>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="Black"></Setter>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Setter Property="Background" Value="Aqua"></Setter>
+                </Trigger>
+
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="MultiTrigger" TargetType="{x:Type Button}">
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsMouseOver" Value="True"></Condition>
+                        <Condition Property="IsEnabled" Value="True"></Condition>
+                    </MultiTrigger.Conditions>
+                    <MultiTrigger.Setters>
+                        <Setter Property="Background" Value="Chartreuse"></Setter>
+                        <Setter Property="Foreground" Value="Black"></Setter>
+                    </MultiTrigger.Setters>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Button Name="Btn1"  Content="IsSetProperty" Margin="10,17,162,212" Style="{StaticResource ButtonStyle}"/>
+        <Button Name="Btn2"  Content="Multi trigger" Style="{StaticResource MultiTrigger}" Margin="159,22,26,212"/>
+    </Grid>
+</Window>

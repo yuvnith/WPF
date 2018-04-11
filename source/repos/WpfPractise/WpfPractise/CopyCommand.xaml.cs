@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace WpfPractise
@@ -8,6 +9,7 @@ namespace WpfPractise
     /// </summary>
     public partial class CopyCommand : Window
     {
+        
         public CopyCommand()
         {
             InitializeComponent();

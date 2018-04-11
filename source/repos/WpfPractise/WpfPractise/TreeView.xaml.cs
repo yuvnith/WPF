@@ -36,38 +36,62 @@ namespace WpfPractise
             Students s1 = new Students()
             {
                 Name = "vamshi",
-                det = new ObservableCollection<Subjects>()
+                det = new ObservableCollection<Details>()
                 {
-                    
-                            new Subjects()
+                        new Details()
+                        {
+                            Marks = new ObservableCollection<Subjects>()
                             {
-                                Science = "80",
-                                Maths = "100"
-                            }
-               
+                                new Subjects()
+                                {
+                                    Maths = "100",
+                                    Science = "40"
+                                }
+                            },
+
+                           Info = new ObservableCollection<Personal>()
+                           {
+                               new Personal()
+                               {
+                                   Age = "20",
+                                   Location = "Hyderabad"
+                               }
+                           }
+                        }
+
                 }
             };
             Students s2 = new Students()
             {
                 Name = "krishna",
-                det = new ObservableCollection<Subjects>()
+                det = new ObservableCollection<Details>()
                 {
-                    
+                    new Details()
+                    {
+                        Marks = new ObservableCollection<Subjects>()
+                        {
                             new Subjects()
                             {
-                                Maths = "100",
-                                Science = "90"
-
+                                Maths = "10",
+                                Science = "80"
                             }
-                   
+                        },
+
+                        Info = new ObservableCollection<Personal>()
+                        {
+                            new Personal()
+                            {
+                                Age = "22",
+                                Location = "Secunderabad"
+                            }
+                        }
+                    }
+
                 }
 
             };
-
-
             data.Add(s1);
             data.Add(s2);
-
             return data;
         }
 
@@ -77,17 +101,23 @@ namespace WpfPractise
     public class Students
     {
         public string Name { get; set; }
-        public ObservableCollection<Subjects> det { get; set; }
+        public ObservableCollection<Details> det { get; set; }
     }
 
     public class Details
     {
         public ObservableCollection<Subjects> Marks { get; set; }
+        public ObservableCollection<Personal> Info { get; set; }
     }
 
     public class Subjects
     {
         public string Maths { get; set; }
         public string Science { get; set; }
+    }
+    public class Personal
+    {
+        public string Age { get; set; }
+        public string Location { get; set; }
     }
 }

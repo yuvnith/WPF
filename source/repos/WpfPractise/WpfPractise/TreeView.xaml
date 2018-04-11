@@ -10,19 +10,43 @@
     <Window.Resources>
 
         <HierarchicalDataTemplate
-             DataType="{x:Type local:Subjects}"
-             >
+             DataType="{x:Type local:Personal}">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{Binding Age}"></TextBlock>
+                <TextBlock Text="{Binding Location}"></TextBlock>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+
+
+        <HierarchicalDataTemplate
+            DataType="{x:Type local:Subjects}">
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="{Binding Maths}"></TextBlock>
                 <TextBlock Text="{Binding Science}"></TextBlock>
             </StackPanel>
         </HierarchicalDataTemplate>
 
+
+        <HierarchicalDataTemplate
+            DataType="{x:Type local:Details}"
+            ItemsSource="{Binding Marks}">
+            <TextBlock Text="marks"></TextBlock>
+        </HierarchicalDataTemplate>
+
+        
+        <!--<HierarchicalDataTemplate
+            DataType="{x:Type local:Details}"
+            ItemsSource="{Binding Info}">
+            <TextBlock Text="Personal Information"></TextBlock>
+        </HierarchicalDataTemplate>-->
+
+
         <HierarchicalDataTemplate
              DataType="{x:Type local:Students}"
              ItemsSource="{Binding det}">
             <TextBlock Text="{Binding Path=Name}"></TextBlock>
         </HierarchicalDataTemplate>
+
 
 
     </Window.Resources>

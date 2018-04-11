@@ -58,12 +58,22 @@
     <Compile Include="CopyCommand.xaml.cs">
       <DependentUpon>CopyCommand.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomCommand.xaml.cs">
+      <DependentUpon>CustomCommand.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataGrid.xaml.cs">
+      <DependentUpon>DataGrid.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Employee.cs" />
     <Compile Include="EventRouting.xaml.cs">
       <DependentUpon>EventRouting.xaml</DependentUpon>
     </Compile>
     <Compile Include="ListBox.xaml.cs">
       <DependentUpon>ListBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyCommand.cs" />
+    <Compile Include="Templates.xaml.cs">
+      <DependentUpon>Templates.xaml</DependentUpon>
     </Compile>
     <Compile Include="TreeView.xaml.cs">
       <DependentUpon>TreeView.xaml</DependentUpon>
@@ -74,6 +84,9 @@
     <Compile Include="TreeViewBinding.xaml.cs">
       <DependentUpon>TreeViewBinding.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Triggers.xaml.cs">
+      <DependentUpon>Triggers.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Validations.xaml.cs">
       <DependentUpon>Validations.xaml</DependentUpon>
     </Compile>
@@ -81,6 +94,14 @@
       <DependentUpon>ValueConverter.xaml</DependentUpon>
     </Compile>
     <Page Include="CopyCommand.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomCommand.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -104,6 +125,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Templates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TreeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -113,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TreeViewBinding.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Triggers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
