@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data;
 using System.Data.OracleClient;
@@ -22,31 +23,38 @@ namespace WpfPractise.ADO.Connected
     /// </summary>
     public partial class Employee : Window
     {
-         OracleConnection connection;
-         OracleCommand command;
+        OracleConnection connection;
+        OracleCommand command;
+
+        public ObservableCollection<Emp> collection { get; set; } = new ObservableCollection<Emp>();
+        public ObservableCollection<Temp> collection2 = new ObservableCollection<Temp>();
+
         public Employee()
         {
             InitializeComponent();
+
 
             string constring = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
             connection = new OracleConnection(constring);
             command = new OracleCommand();
             command.Connection = connection;
-            command.CommandType=CommandType.Text;
+            command.CommandType = CommandType.Text;
             display();
+
+
         }
 
         public void btn_add_Click(object sender, RoutedEventArgs e)
         {
             string name = inp_name.Text;
-            int salary = int.Parse(inp_salary.Text);
+            float salary = float.Parse(inp_salary.Text);
             int no = int.Parse(inp_no.Text);
             command.Parameters.Clear();
             command.CommandText = "insert into Employees (EMPNO,ENAME,SALARY) values(:EMPNO,:ENAME,:SALARY)";
             command.Parameters.AddWithValue("EMPNO", no);
             command.Parameters.AddWithValue("ENAME", name);
             command.Parameters.AddWithValue("SALARY", salary);
-            if(connection.State == ConnectionState.Closed)
+            if (connection.State == ConnectionState.Closed)
                 connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
@@ -63,8 +71,33 @@ namespace WpfPractise.ADO.Connected
             OracleDataReader dataReader = command.ExecuteReader(CommandBehavior.CloseConnection);
             DataTable dataTable = new DataTable();
             dataTable.Load(dataReader);
-            dg.DataContext = dataTable;
 
+            collection.Clear();
+            collection2.Clear();
+            foreach (DataRow dataTableRow in dataTable.Rows)
+            {
+                Emp e = new Emp
+                {
+                    EName = dataTableRow.ItemArray[1].ToString(),
+                    Eno = int.Parse(dataTableRow.ItemArray[0].ToString()),
+                    Esalary = float.Parse(dataTableRow.ItemArray[2].ToString())
+                };
+                collection.Add(e);
+
+
+                Temp t = new Temp
+                {
+                    EName = dataTableRow.ItemArray[1].ToString(),
+                    Det = new List<string> { "EMPNO: "+dataTableRow.ItemArray[0].ToString() ,"SALARY : "+dataTableRow.ItemArray[2].ToString() }
+                };
+
+                collection2.Add(t);
+            }
+
+            dg.DataContext = null;
+            dg.DataContext = collection;
+            tree.DataContext = null;
+            tree.DataContext = collection2;
         }
 
         private void btn_display_Click(object sender, RoutedEventArgs e)
@@ -102,7 +135,7 @@ namespace WpfPractise.ADO.Connected
         private void btn_update_Click(object sender, RoutedEventArgs e)
         {
             string name = inp_name.Text;
-            int salary = int.Parse(inp_salary.Text);
+            float salary = float.Parse(inp_salary.Text);
             int no = int.Parse(inp_no.Text);
             command.Parameters.Clear();
             command.CommandText = "update Employees set ENAME=:ename,SALARY=:salary where EMPNO =:empno ";
@@ -120,4 +153,21 @@ namespace WpfPractise.ADO.Connected
             inp_salary.Text = "";
         }
     }
+
+    public class Emp
+    {
+        public string EName { get; set; }
+        public int Eno { get; set; }
+        public float Esalary { get; set;}
+    }
+
+    public class Temp
+    {
+        public string EName { get; set; }
+        public List<string> Det { get; set; }
+    }
+
+
+
+
 }
