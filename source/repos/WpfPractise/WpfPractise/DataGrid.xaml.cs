@@ -34,7 +34,9 @@ namespace WpfPractise
             };
 
             this.DataContext = Coll;
+            Student s = new Student() {Name = "asdas"};
 
+           
 
         }
 
