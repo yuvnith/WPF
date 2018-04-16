@@ -7,9 +7,19 @@
         mc:Ignorable="d"
         Title="Employee" Height="425.771" Width="663.39" WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <HierarchicalDataTemplate DataType="{x:Type local:Temp}" ItemsSource="{Binding Det}">
-            <TextBlock Text="{Binding EName}"></TextBlock>
+
+      <HierarchicalDataTemplate DataType="{x:Type local:Temp}" ItemsSource="{Binding Details}">
+          <TextBlock Text="{Binding EName}"></TextBlock>
+      </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate DataType="{x:Type local:Emp}" >
+           <StackPanel Orientation="Vertical">
+               <TextBlock Text="{Binding EName}"></TextBlock>
+               <TextBlock Text="{Binding Esalary}"></TextBlock>
+               <TextBlock Text="{Binding Eno}"></TextBlock>
+            </StackPanel>
         </HierarchicalDataTemplate>
+
     </Window.Resources>
 
     <Grid Margin="0,0,9,1" >
@@ -23,10 +33,29 @@
         <Button x:Name="btn_update" Content="UPDATE" HorizontalAlignment="Left" Margin="96,106,0,0" VerticalAlignment="Top" Width="75" Click="btn_update_Click"/>
         <Button Content="DELETE" HorizontalAlignment="Left" Margin="183,106,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Button x:Name="btn_display" Content="DISPLAY" HorizontalAlignment="Left" Margin="272,106,0,0" VerticalAlignment="Top" Width="75" Click="btn_display_Click"/>
-        <DataGrid x:Name="dg" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="237" Margin="10,147,0,0" VerticalAlignment="Top" Width="337">
-           </DataGrid>
-        <Button x:Name="btn_search" Content="SEARCH" HorizontalAlignment="Left" Margin="229,6,0,0" VerticalAlignment="Top" Width="75" Click="btn_search_Click"/>
-        <TreeView Name="tree" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="297" Margin="435,66,0,0" VerticalAlignment="Top" Width="189">
+        <DataGrid x:Name="dg" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="237" Margin="10,147,0,0" VerticalAlignment="Top" Width="337" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="No">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Eno}" DataContext="{Binding Path=Details}"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding EName}" Header="Name"/>
+                <DataGridTemplateColumn Header="Salary">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Esalary}" DataContext="{Binding Path=Details}"></TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <!--<DataGridTextColumn Binding="{Binding Eno}" Header="No"/>
+                <DataGridTextColumn Binding="{Binding Esalary}" Header="Salary"/>-->
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="BtnSearch" Content="SEARCH" HorizontalAlignment="Left" Margin="229,6,0,0" VerticalAlignment="Top" Width="75" Click="btn_search_Click"/>
+        <TreeView x:Name="Tree" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="297" Margin="435,66,0,0" VerticalAlignment="Top" Width="189">
 
         </TreeView>
 

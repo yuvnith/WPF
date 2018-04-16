@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.OracleClient;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,7 +28,7 @@ namespace WpfPractise.ADO.Connected
         OracleCommand command;
 
         public ObservableCollection<Emp> collection { get; set; } = new ObservableCollection<Emp>();
-        public ObservableCollection<Temp> collection2 = new ObservableCollection<Temp>();
+        public ObservableCollection<Temp> collection2 { get; set; }= new ObservableCollection<Temp>();
 
         public Employee()
         {
@@ -76,28 +77,37 @@ namespace WpfPractise.ADO.Connected
             collection2.Clear();
             foreach (DataRow dataTableRow in dataTable.Rows)
             {
-                Emp e = new Emp
+                //Emp e = new Emp
+                //{
+                //    EName = dataTableRow.ItemArray[1].ToString(),
+                //    Eno = int.Parse(dataTableRow.ItemArray[0].ToString()),
+                //    Esalary = float.Parse(dataTableRow.ItemArray[2].ToString())
+                //};
+
+                //collection.Add(e);
+
+                collection2.Add(new Temp
                 {
                     EName = dataTableRow.ItemArray[1].ToString(),
-                    Eno = int.Parse(dataTableRow.ItemArray[0].ToString()),
-                    Esalary = float.Parse(dataTableRow.ItemArray[2].ToString())
-                };
-                collection.Add(e);
+                    Details = new ObservableCollection<Emp>
+                    {
+                        new Emp
+                        {
+                            EName = dataTableRow.ItemArray[1].ToString(),
+                            Eno = int.Parse(dataTableRow.ItemArray[0].ToString()),
+                            Esalary = float.Parse(dataTableRow.ItemArray[2].ToString())
+                        }
+                    }
+                });
 
-
-                Temp t = new Temp
-                {
-                    EName = dataTableRow.ItemArray[1].ToString(),
-                    Det = new List<string> { "EMPNO: "+dataTableRow.ItemArray[0].ToString() ,"SALARY : "+dataTableRow.ItemArray[2].ToString() }
-                };
-
-                collection2.Add(t);
             }
 
             dg.DataContext = null;
-            dg.DataContext = collection;
-            tree.DataContext = null;
-            tree.DataContext = collection2;
+            dg.DataContext = collection2;
+            Tree.DataContext = null;
+            Tree.DataContext = collection2;
+
+            
         }
 
         private void btn_display_Click(object sender, RoutedEventArgs e)
@@ -157,14 +167,16 @@ namespace WpfPractise.ADO.Connected
     public class Emp
     {
         public string EName { get; set; }
-        public int Eno { get; set; }
-        public float Esalary { get; set;}
+        public int? Eno { get; set; }
+        public float? Esalary { get; set;}
+
+       
     }
 
     public class Temp
     {
         public string EName { get; set; }
-        public List<string> Det { get; set; }
+        public ObservableCollection<Emp> Details { get; set; } 
     }
 
 
