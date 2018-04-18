@@ -1,0 +1,20 @@
+﻿<Window x:Class="WpfPractise.ADO.Connected.BTransaction"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfPractise.ADO.Connected"
+        mc:Ignorable="d"
+        Title="BTransaction" Height="300" Width="300">
+    <Grid>
+        <Label Content="From Account
+               " HorizontalAlignment="Left" Margin="15,29,0,0" VerticalAlignment="Top"/>
+        <Label Content="To Account
+               " HorizontalAlignment="Left" Margin="30,64,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="inp_fromacc" HorizontalAlignment="Left" Height="23" Margin="100,32,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="inp_toacc" HorizontalAlignment="Left" Height="23" Margin="100,69,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Label Content="Amount" HorizontalAlignment="Left" Margin="46,101,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="inp_amount" HorizontalAlignment="Left" Height="23" Margin="100,105,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Button Content="Transfer" Name="btn_transfer" HorizontalAlignment="Left" Margin="145,147,0,0" VerticalAlignment="Top" Width="75" Click="btn_transfer_Click"/>
+    </Grid>
+</Window>

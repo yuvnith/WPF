@@ -27,6 +27,7 @@ namespace WpfPractise
 
         private void Button_OnClick(object sender, RoutedEventArgs e)
         {
+            //Listbox.Items.Clear();
             Listbox.Visibility = Visibility.Visible;
             for (int i = 0; i < 10; i++)
             {
@@ -38,6 +39,11 @@ namespace WpfPractise
         {
             TextBox.Text = Listbox.SelectedItems[0].ToString();
             Listbox.Visibility = Visibility.Hidden;
+        }
+
+        public int demo()
+        {
+            return Listbox.Items.Count;
         }
     }
 }

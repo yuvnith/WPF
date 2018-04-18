@@ -26,6 +26,7 @@ namespace WpfPractise
             InitializeComponent();
 
             Box.Listbox.Items.Add("23234");
+            MessageBox.Show(Box.demo().ToString());
 
         }
 

@@ -104,11 +104,6 @@ namespace WpfPractise.ADO.Disconnected
                 dt.Rows.Add(row.ItemArray);
                 dg.DataContext = null;
                 dg.DataContext = dt;
-
-
-                
-
-
             }
         }
 
