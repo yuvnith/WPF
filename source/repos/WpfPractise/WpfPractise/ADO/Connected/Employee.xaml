@@ -21,11 +21,12 @@
                 <TextBlock Text="{Binding DeptId}"></TextBlock>
             </StackPanel>
         </HierarchicalDataTemplate>
-        
-        
-        <HierarchicalDataTemplate DataType="{x:Type local:Temp2}" ItemsSource="{Binding}">
+
+
+        <HierarchicalDataTemplate DataType="{x:Type local:JoinTree}" ItemsSource="{Binding Emp}">
             <TextBlock Text="{Binding EName}"></TextBlock>
         </HierarchicalDataTemplate>
+        
 
     </Window.Resources>
 

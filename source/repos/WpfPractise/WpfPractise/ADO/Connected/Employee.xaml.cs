@@ -35,7 +35,10 @@ namespace WpfPractise.ADO.Connected
 
         public ObservableCollection<Join> JoinCol { get; set; } = new ObservableCollection<Join>();
 
-        public ObservableCollection<Temp2> JoinTree { get; set; } = new ObservableCollection<Temp2>();
+        public ObservableCollection<Manager> JoinTree { get; set; } = new ObservableCollection<Manager>();
+
+
+        public ObservableCollection<JoinTree> JoinTree2 { get; set; } = new ObservableCollection<JoinTree>();
         public enum Roles
         {
             Manager = 3,
@@ -86,6 +89,8 @@ namespace WpfPractise.ADO.Connected
             display1();
 
             display2();
+
+
         }
 
         public void display()
@@ -300,41 +305,339 @@ namespace WpfPractise.ADO.Connected
             dg2.DataContext = null;
             dg2.DataContext = JoinCol;
 
+            Tree2();
+        }
 
-            var dev = new ObservableCollection<Temp2>();
-            var test = new ObservableCollection<Temp2>();
-          
 
-            foreach (var col in JoinCol)
+
+
+        public void tree()
+        {
+            JoinTree.Clear();
+            var leads = new ObservableCollection<Lead>();
+            var temp2 = new ObservableCollection<Join>();
+
+
+            for (int i = 0; i < JoinCol.Count; i++)
             {
-                if (col.Role.ToUpper() == "DEVELOPER")
-                    dev.Add(new Temp2()
+                var t1 = new ObservableCollection<Join>();
+                var t2 = new ObservableCollection<Join>();
+                foreach (var jo in JoinCol)
+                {
+                    if (jo.Role.ToUpper() == "DEVELOPER")
+                        t1.Add(jo);
+                    if (jo.Role.ToUpper() == "TESTER")
+                        t2.Add(jo);
+                }
+                if (JoinCol[i].Role.ToLower().Trim() == "lead" && JoinCol[i].EName.ToLower().Trim() == "lead1")
+                {
+                    leads.Add(new Lead()
                     {
-                        EName = col.EName
+                        EName = JoinCol[i].EName,
+                        E = t1
                     });
-                else if (col.Role.ToUpper() == "TESTER")
-                    test.Add(new Temp2()
+                }
+
+                if (JoinCol[i].Role.ToLower().Trim() == "lead" && JoinCol[i].EName.ToLower().Trim() == "lead2")
+                {
+                    leads.Add(new Lead()
                     {
-                        EName = col.EName
+                        EName = JoinCol[i].EName,
+                        E = t2
                     });
+                }
             }
 
-            foreach (var col in JoinCol)
+            foreach (Join t in JoinCol)
             {
-                if (col.Role.ToUpper() == "MANAGER")
+                if (t.Role.ToUpper() == "MANAGER")
                 {
-                    JoinTree.Add(new Temp2()
+                    JoinTree.Add(new Manager()
                     {
-                        EName = col.EName,
-                        Developers = dev,
-                        Testers = test
+                        EName = t.EName,
+                        Leads = leads
                     });
-                    break;
                 }
-              
             }
             TreeView2.DataContext = JoinTree;
         }
+
+        public void Tree2()
+        {
+            JoinTree2.Clear();
+            foreach (var j in JoinCol)
+            {
+                if (j.Role.ToLower().Trim() == "manager")
+                {
+                    if (JoinTree2.Count == 0)
+                    {
+                        JoinTree2.Add(new JoinTree()
+                        {
+                            EName = j.EName,
+                            Emp = new ObservableCollection<JoinTree>()
+                        });
+                    }
+                    else
+                    {
+                        JoinTree2[0].EName = j.EName;
+                    }
+                }
+
+                else if (j.Role.ToLower().Trim() == "tlead")
+                {
+                    if (JoinTree2.Count == 1)
+                    {
+                        int flag = 0;
+                        foreach (var jj in JoinTree2[0].Emp)
+                        {
+                            if (jj.Role.ToLower().Trim() == "tlead")
+                            {
+                                jj.EName = j.EName;
+                                flag = 1;
+                            }
+                        }
+
+                        if (flag == 0)
+                        {
+                            JoinTree2[0].Emp.Add(new JoinTree()
+                            {
+                                EName =  j.EName,
+                                Role = j.Role,
+                                Emp = new ObservableCollection<JoinTree>()
+                            });
+                        }
+                    }
+                    else
+                    {
+                        JoinTree2.Add(new JoinTree()
+                        {
+                            EName = "",
+                            Emp = new ObservableCollection<JoinTree>()
+                        });
+                        JoinTree2[0].Emp.Add(new JoinTree()
+                        {
+                            EName = j.EName,
+                            Role = j.Role,
+                            Emp = new ObservableCollection<JoinTree>()
+                        });
+
+
+                    }
+                }
+
+                else if (j.Role.ToLower().Trim() == "dlead")
+                {
+                    if (JoinTree2.Count == 1)
+                    {
+                        int flag = 0;
+                        foreach (var jj in JoinTree2[0].Emp)
+                        {
+                            if (jj.Role.ToLower().Trim() == "dlead")
+                            {
+                                jj.EName = j.EName;
+                                flag = 1;
+                            }
+                        }
+
+                        if (flag == 0)
+                        {
+                            JoinTree2[0].Emp.Add(new JoinTree()
+                            {
+                                EName = j.EName,
+                                Role = j.Role,
+                                Emp = new ObservableCollection<JoinTree>()
+                            });
+                        }
+                    }
+                    else
+                    {
+                        JoinTree2.Add(new JoinTree()
+                        {
+                            EName = "",
+                            Emp = new ObservableCollection<JoinTree>()
+                        });
+                        JoinTree2[0].Emp.Add(new JoinTree()
+                        {
+                            EName = j.EName,
+                            Role = j.Role,
+                            Emp = new ObservableCollection<JoinTree>()
+                        });
+
+
+                    }
+                }
+
+                else if (j.Role.ToLower().Trim() == "developer")
+                {
+                    if (JoinTree2.Count == 1)
+                    {
+                        if (JoinTree2[0].Emp.Count > 0)
+                        {
+                            int flag = 0;
+                            foreach (var jj in JoinTree2[0].Emp)
+                            {
+                                if (jj.Role.ToLower().Trim() == "dlead")
+                                {
+                                    jj.Emp.Add(new JoinTree()
+                                    {
+                                        EName = j.EName,
+                                        Role = j.Role
+                                    });
+
+                                    flag = 1;
+                                }
+                            }
+                            if (flag == 0)
+                            {
+                                JoinTree2[0].Emp.Add(new JoinTree()
+                                {
+                                    EName = "",
+                                    Role = "DLead",
+                                    Emp = new ObservableCollection<JoinTree>
+                                    {
+                                        new JoinTree()
+                                        {
+                                            EName = j.EName,
+                                            Role = j.Role
+                                        }
+                                    }
+
+                                });
+                            }
+                        }
+                        else
+                        {
+                            JoinTree2[0].Emp.Add(new JoinTree()
+                            {
+                                EName = "",
+                                Role = "DLead",
+                                Emp = new ObservableCollection<JoinTree>
+                                {
+                                    new JoinTree()
+                                    {
+                                        EName = j.EName,
+                                        Role = j.Role
+                                    }
+                                }
+                            });
+                        }
+
+                    }
+                    else
+                    {
+                        JoinTree2.Add(new JoinTree()
+                        {
+                            EName = "",
+                            Emp = new ObservableCollection<JoinTree>()
+                            {
+                                new JoinTree()
+                                {
+                                    EName = "",
+                                    Role = "DLead",
+                                    Emp = new ObservableCollection<JoinTree>(){
+                                        new JoinTree()
+                                        {
+                                            EName = j.EName,
+                                            Role = j.Role
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+                    
+                }
+
+
+                else if (j.Role.ToLower().Trim() == "tester")
+                {
+                    if (JoinTree2.Count == 1)
+                    {
+                        if (JoinTree2[0].Emp.Count > 0)
+                        {
+                            int flag = 0;
+                            foreach (var jj in JoinTree2[0].Emp)
+                            {
+                                if (jj.Role.ToLower().Trim() == "tlead")
+                                {
+                                    jj.Emp.Add(new JoinTree()
+                                    {
+                                        EName = j.EName,
+                                        Role = j.Role
+                                    });
+
+                                    flag = 1;
+                                }
+                            }
+                            if (flag == 0)
+                            {
+                                JoinTree2[0].Emp.Add(new JoinTree()
+                                {
+                                    EName = "",
+                                    Role = "TLead",
+                                    Emp = new ObservableCollection<JoinTree>
+                                    {
+                                        new JoinTree()
+                                        {
+                                            EName = j.EName,
+                                            Role = j.Role
+                                        }
+                                    }
+
+                                });
+                            }
+                        }
+                        else
+                        {
+                            JoinTree2[0].Emp.Add(new JoinTree()
+                            {
+                                EName = "",
+                                Role = "TLead",
+                                Emp = new ObservableCollection<JoinTree>{
+                                    new JoinTree()
+                                    {
+                                        EName = j.EName,
+                                        Role = j.Role
+                                    }
+                                }
+                            });
+                        }
+
+                    }
+                    else
+                    {
+                        JoinTree2.Add(new JoinTree()
+                        {
+                            EName = "",
+                            Emp = new ObservableCollection<JoinTree>()
+                            {
+                                new JoinTree()
+                                {
+                                    EName = "",
+                                    Role = "TLead",
+                                    Emp = new ObservableCollection<JoinTree>(){
+                                        new JoinTree()
+                                        {
+                                            EName = j.EName,
+                                            Role = j.Role
+                                        }
+                                    }
+                                }
+                            }
+                        });
+
+                       
+                    }
+                }
+
+
+            }
+
+            TreeView2.DataContext = JoinTree2;
+        }
+
+        
+
         private void btn_display1_Click(object sender, RoutedEventArgs e)
         {
             display1();
@@ -407,18 +710,23 @@ namespace WpfPractise.ADO.Connected
     public class Manager
     {
         public string EName { get; set; }
-        public ObservableCollection<Join> Leads { get; set; }
+        public ObservableCollection<Lead> Leads { get; set; }
     }
 
     public class Lead
     {
         public string EName { get; set; }
-        public ObservableCollection<Join> Developers { get; set; }
+        public ObservableCollection<Join> E { get; set; }
 
-        public ObservableCollection<Join> Testers { get; set; }
     }
 
-    public class Temp2
+    public class Em
+    {
+        public string EName { get; set; }
+    }
+
+
+    public class JoinTree
     {
         public string EName { get; set; }
         public int? Eno { get; set; }
@@ -427,12 +735,16 @@ namespace WpfPractise.ADO.Connected
         public int DeptId { get; set; }
         public string DeptName { get; set; }
 
-        public ObservableCollection<Temp2> Leads { get; set; }
-        public ObservableCollection<Temp2> Developers { get; set; }
-        public ObservableCollection<Temp2> Testers { get; set; }
+        public ObservableCollection<JoinTree> Leads { get; set; }
+        public ObservableCollection<JoinTree> Managers { get; set; }
 
+        public ObservableCollection<JoinTree> Dev { get; set; }
+
+        public ObservableCollection<JoinTree> Test { get; set; }
+
+
+        public ObservableCollection<JoinTree> Emp { get; set; }
     }
-
 
 
 }
