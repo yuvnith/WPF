@@ -1,0 +1,24 @@
+﻿<Window x:Class="WpfPractise.ADO.Data_Set.EmployeeDataSetWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfPractise.ADO.Data_Set"
+        mc:Ignorable="d"
+        Title="EmployeeDataSetWindow" Height="368" Width="551" Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:EmployeeDataSet x:Key="employeeDataSet"/>
+        <CollectionViewSource x:Key="eMPLOYEESViewSource" Source="{Binding EMPLOYEES, Source={StaticResource employeeDataSet}}"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource eMPLOYEESViewSource}" Margin="0,0,2,12">
+        <DataGrid x:Name="eMPLOYEESDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="25,22,24,27" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="eMPNOColumn" Binding="{Binding EMPNO}" Header="EMPNO" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="eNAMEColumn" Binding="{Binding ENAME}" Header="ENAME" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="sALARYColumn" Binding="{Binding SALARY}" Header="SALARY" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="rOLEColumn" Binding="{Binding ROLE}" Header="ROLE" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="dEPTIDColumn" Binding="{Binding DEPTID}" Header="DEPTID" Width="SizeToHeader"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
