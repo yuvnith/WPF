@@ -63,6 +63,7 @@ namespace WpfPractise.ADO.Connected
 
             display2();
 
+            Tree3();
 
         }
 
@@ -305,7 +306,7 @@ namespace WpfPractise.ADO.Connected
             dg2.DataContext = null;
             dg2.DataContext = JoinCol;
 
-            Tree2();
+            Tree3();
         }
 
 
@@ -634,6 +635,138 @@ namespace WpfPractise.ADO.Connected
             }
 
             TreeView2.DataContext = JoinTree2;
+        }
+
+        public void Tree3()
+        {
+            JoinTree2.Clear();
+            command.Parameters.Clear();
+            //command.CommandText = "SELECT distinct(deptid) from employees";
+            command.CommandText = "SELECT deptid from departments";
+            if (connection.State == ConnectionState.Closed)
+                connection.Open();
+            OracleDataReader dataReader = command.ExecuteReader(CommandBehavior.CloseConnection);
+            DataTable dataTable = new DataTable();
+            dataTable.Load(dataReader);
+
+            foreach (DataRow dataTableRow in dataTable.Rows)
+            {
+                JoinTree2.Add(new JoinTree()
+                {
+                    DeptId = int.Parse(dataTableRow.ItemArray[0].ToString()),
+                    EName = dataTableRow.ItemArray[0].ToString(),
+                    Emp = new ObservableCollection<JoinTree>()
+                });
+            }
+
+            foreach (var j in JoinTree2)
+            {
+                command.Parameters.Clear();
+                command.CommandText = "SELECT * from employees where deptid=:did";
+                command.Parameters.AddWithValue("did", j.DeptId);
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+                dataReader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                dataTable = new DataTable();
+                dataTable.Load(dataReader);
+
+                foreach (DataRow dataTableRow in dataTable.Rows)
+                {
+                    if (dataTableRow.ItemArray[3].ToString().ToLower().Trim() == "manager")
+                    {
+                        j.Emp.Add(new JoinTree()
+                        {
+                            EName = dataTableRow.ItemArray[1].ToString(),
+                            Role = dataTableRow.ItemArray[3].ToString(),
+                            Emp = new ObservableCollection<JoinTree>()
+                        });
+                    }
+                }
+            }
+
+            foreach (var j in JoinTree2)
+            {
+                foreach (var j2 in j.Emp)
+                {
+                    command.Parameters.Clear();
+                    command.CommandText = "SELECT distinct(role),ename from employees where deptid=:did";
+                    command.Parameters.AddWithValue("did", j.DeptId);
+                    if (connection.State == ConnectionState.Closed)
+                        connection.Open();
+                    dataReader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                    dataTable = new DataTable();
+                    dataTable.Load(dataReader);
+
+
+                    foreach (DataRow dataTableRow in dataTable.Rows)
+                    {
+                        if (dataTableRow.ItemArray[0].ToString().ToLower().Trim().Contains("lead"))
+                        {
+                            j2.Emp.Add(new JoinTree()
+                            {
+                                EName = dataTableRow.ItemArray[1].ToString(),
+                                Role = dataTableRow.ItemArray[0].ToString(),
+                                Emp = new ObservableCollection<JoinTree>()
+                            });
+                        }
+                    }
+                }
+            }
+
+            foreach (var j in JoinTree2)
+            {
+                foreach (var j2 in j.Emp)
+                {
+                    foreach (var j3 in j2.Emp)
+                    {
+                        command.Parameters.Clear();
+                        command.CommandText = "SELECT * from employees where deptid=:did";
+                        command.Parameters.AddWithValue("did", j.DeptId);
+                        if (connection.State == ConnectionState.Closed)
+                            connection.Open();
+                        dataReader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                        dataTable = new DataTable();
+                        dataTable.Load(dataReader);
+
+
+                        if (j3.Role.ToLower().Trim() == "dlead")
+                        {
+                            foreach (DataRow dataTableRow in dataTable.Rows)
+                            {
+                                if (dataTableRow.ItemArray[3].ToString().ToLower().Trim() == "developer")
+                                {
+                                    j3.Emp.Add(new JoinTree()
+                                    {
+                                        EName = dataTableRow.ItemArray[1].ToString(),
+                                        Role = dataTableRow.ItemArray[3].ToString(),
+                                    });
+                                }
+                            }
+                        }
+
+                        if (j3.Role.ToLower().Trim() == "tlead")
+                        {
+                            foreach (DataRow dataTableRow in dataTable.Rows)
+                            {
+                                if (dataTableRow.ItemArray[3].ToString().ToLower().Trim() == "tester")
+                                {
+                                    j3.Emp.Add(new JoinTree()
+                                    {
+                                        EName = dataTableRow.ItemArray[1].ToString(),
+                                        Role = dataTableRow.ItemArray[3].ToString(),
+                                    });
+                                }
+                            }
+                        }
+
+                    }
+
+                }
+            }
+
+
+            TreeView2.DataContext = JoinTree2;
+
         }
 
         
