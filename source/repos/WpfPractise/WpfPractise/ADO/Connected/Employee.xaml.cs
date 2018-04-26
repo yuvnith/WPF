@@ -28,12 +28,17 @@ namespace WpfPractise.ADO.Connected
         OracleConnection connection;
         OracleCommand command;
 
+        //data grid text box value change 
+        int flag = 0;
+
         //  public ObservableCollection<Emp> collection { get; set; } = new ObservableCollection<Emp>();
         public ObservableCollection<Temp> collection2 { get; set; } = new ObservableCollection<Temp>();
 
         public ObservableCollection<Temp1> DeptCol { get; set; } = new ObservableCollection<Temp1>();
 
         public ObservableCollection<Join> JoinCol { get; set; } = new ObservableCollection<Join>();
+
+        public List<Join> FilterCol { get; set; } = new List<Join>();
 
         public ObservableCollection<Manager> JoinTree { get; set; } = new ObservableCollection<Manager>();
 
@@ -108,15 +113,6 @@ namespace WpfPractise.ADO.Connected
             collection2.Clear();
             foreach (DataRow dataTableRow in dataTable.Rows)
             {
-                //Emp e = new Emp
-                //{
-                //    EName = dataTableRow.ItemArray[1].ToString(),
-                //    Eno = int.Parse(dataTableRow.ItemArray[0].ToString()),
-                //    Esalary = float.Parse(dataTableRow.ItemArray[2].ToString())
-                //};
-
-                //collection.Add(e);
-
                 collection2.Add(new Temp
                 {
                     EName = dataTableRow.ItemArray[1].ToString(),
@@ -306,8 +302,77 @@ namespace WpfPractise.ADO.Connected
             dg2.DataContext = null;
             dg2.DataContext = JoinCol;
 
+            if (dg2.ItemsSource == null)
+            {
+                dg2.Items.Clear();
+                dg2.ItemsSource = JoinCol;
+            }
             Tree3();
+
+            flag = 0;
         }
+
+
+        private void MenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (flag == 0)
+            {
+                flag = 1;
+                dg2.ItemsSource = null;
+                dg2.Items.Add(new Join()
+                {
+                    DeptId = null,
+                    EName = "",
+                    Role = "",
+                    Eno = null,
+                    Esalary = null,
+                    DeptName = ""
+                });
+
+
+
+
+            }
+
+        }
+
+        private void TextBoxBase_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (flag == 1)
+            {
+                TextBox tb = sender as TextBox;
+                string name = tb.Text;
+
+                var list = JoinCol.Where(s => s.EName.StartsWith(name));
+                var er = list.GetEnumerator();
+                er.MoveNext();
+
+                FilterCol.Clear();
+                foreach (var l in list)
+                {
+                    FilterCol.Add(new Join()
+                    {
+                        EName = er.Current.EName,
+                        Role = er.Current.Role,
+                        Eno = er.Current.Eno,
+                        Esalary = er.Current.Esalary,
+                        DeptName = er.Current.DeptName,
+                        DeptId = er.Current.DeptId
+
+                    });
+                    er.MoveNext();
+                }
+
+
+                foreach (var f in FilterCol)
+                {
+                    dg2.Items.Add(f);
+                }
+
+            }
+            // flag = 1;
+        }
+
 
 
 
@@ -402,7 +467,7 @@ namespace WpfPractise.ADO.Connected
                         {
                             JoinTree2[0].Emp.Add(new JoinTree()
                             {
-                                EName =  j.EName,
+                                EName = j.EName,
                                 Role = j.Role,
                                 Emp = new ObservableCollection<JoinTree>()
                             });
@@ -546,7 +611,7 @@ namespace WpfPractise.ADO.Connected
                             }
                         });
                     }
-                    
+
                 }
 
 
@@ -627,7 +692,7 @@ namespace WpfPractise.ADO.Connected
                             }
                         });
 
-                       
+
                     }
                 }
 
@@ -769,19 +834,21 @@ namespace WpfPractise.ADO.Connected
 
         }
 
-        
+
 
         private void btn_display1_Click(object sender, RoutedEventArgs e)
         {
             display1();
         }
 
-        private void dg2_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+
+
+        private void dg1_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            var dg2SelectedItems = dg2.SelectedItems.GetEnumerator();
-            dg2SelectedItems.MoveNext();
-            var joinobject = (Join)dg2SelectedItems.Current;
-            int deptid = int.Parse(joinobject?.DeptId.ToString());
+            var dg1SelectedItems = dg1.SelectedItems.GetEnumerator();
+            dg1SelectedItems.MoveNext();
+            var joinobject = (Temp1)dg1SelectedItems.Current;
+            int deptid = int.Parse(joinobject?.Details[0].DeptId.ToString());
 
 
             command.Parameters.Clear();
@@ -795,7 +862,86 @@ namespace WpfPractise.ADO.Connected
 
             dg4.DataContext = dataTable;
 
-            //((Join)new List<Join>()(dg2.SelectedItems).Items[0]).DeptId
+        }
+
+        private void btn_View2_Click(object sender, RoutedEventArgs e)
+        {
+            display2();
+        }
+
+
+        private void TextBoxBase_OnLostFocus(object sender, RoutedEventArgs e)
+        {
+            if (flag == 1)
+            {
+                TextBox tb = sender as TextBox;
+                string name = tb.Text;
+
+
+
+                FilterCol.Clear();
+                for (int i = 0; i < JoinCol.Count; i++)
+                {
+                    if(JoinCol[i].EName.StartsWith(name))
+                        FilterCol.Add(JoinCol[i]);
+                }
+                
+                int c = dg2.Items.Count;
+                for (int i = c - 1; i > 0; i--)
+                {
+                    dg2.Items.RemoveAt(i);
+                }
+                foreach (var f in FilterCol)
+                {
+                    dg2.Items.Add(f);
+                }
+
+
+            }
+        }
+
+        private void UIElement_OnLostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            string sal = tb.Text;
+
+
+
+            //foreach (var f in FilterCol)
+            //{
+            //    if (f.Esalary.ToString() != sal)
+            //        FilterCol.Remove(f);
+            //}
+
+            for (int j = 0; j < FilterCol.Count; j++)
+            {
+                if(FilterCol[j].EName.ToString() != sal)
+                    FilterCol.RemoveAt(j);
+
+            }
+
+
+
+            for (int i = 0; i < FilterCol.Count; i++)
+            {
+                if (FilterCol[i].Esalary.ToString() != sal)
+                    FilterCol.RemoveAt(i);
+            }
+
+
+
+            int c = dg2.Items.Count;
+            for (int i = c - 1; i > 0; i--)
+            {
+                dg2.Items.RemoveAt(i);
+            }
+
+            foreach (var f in FilterCol)
+            {
+                dg2.Items.Add(f);
+            }
+
+
         }
     }
 
@@ -836,7 +982,7 @@ namespace WpfPractise.ADO.Connected
         public int? Eno { get; set; }
         public float? Esalary { get; set; }
         public string Role { get; set; }
-        public int DeptId { get; set; }
+        public int? DeptId { get; set; }
         public string DeptName { get; set; }
     }
 

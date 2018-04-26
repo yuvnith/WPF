@@ -1,0 +1,19 @@
+﻿<Window x:Class="WpfPractise.ADO.Data_Relation.DataRelation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfPractise.ADO.Data_Relation"
+        mc:Ignorable="d"
+        Title="DataRelation" Height="922.131" Width="361.777" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+   
+    <Grid Margin="0,0,14,19">
+        <DataGrid x:Name="dg1" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="261" Margin="10,10,0,0" VerticalAlignment="Top" Width="310"/>
+        <Button x:Name="btn_employee" Content="Employee" HorizontalAlignment="Left" Margin="10,286,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.573,-5.2" Click="btn_employee_Click"/>
+        <DataGrid x:Name="dg2" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="120" Margin="10,329,0,0" VerticalAlignment="Top" Width="310"/>
+        <Button x:Name="btn_department_" Content="Department" HorizontalAlignment="Left" Margin="10,454,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.587,-2.05" Click="btn_department__Click"/>
+        <DataGrid x:Name="dg3" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="320" Margin="10,491,0,0" VerticalAlignment="Top" Width="310"/>
+        <Button x:Name="btn_Combine" Content="Combine" HorizontalAlignment="Left" Margin="10,831,0,0" VerticalAlignment="Top" Width="75" Click="btn_Combine_Click"/>
+
+    </Grid>
+</Window>

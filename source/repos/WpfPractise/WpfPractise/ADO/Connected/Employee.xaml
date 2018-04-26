@@ -26,7 +26,7 @@
         <HierarchicalDataTemplate DataType="{x:Type local:JoinTree}" ItemsSource="{Binding Emp}">
             <TextBlock Text="{Binding EName}"></TextBlock>
         </HierarchicalDataTemplate>
-        
+
 
     </Window.Resources>
 
@@ -43,7 +43,7 @@
         <Button x:Name="btn_display" Content="DISPLAY" HorizontalAlignment="Left" Margin="272,185,0,0" VerticalAlignment="Top" Width="75" Click="btn_display_Click"/>
         <DataGrid x:Name="dg" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="237" Margin="10,226,0,0" VerticalAlignment="Top" Width="337" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="No">
+                <DataGridTemplateColumn Header="No" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Eno}" DataContext="{Binding Path=Details}"></TextBlock>
@@ -51,21 +51,21 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTextColumn Binding="{Binding EName}" Header="Name"/>
-                <DataGridTemplateColumn Header="Salary">
+                <DataGridTemplateColumn Header="Salary" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox Text="{Binding Esalary}" DataContext="{Binding Path=Details}"></TextBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Role">
+                <DataGridTemplateColumn Header="Role" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox Text="{Binding Role}" DataContext="{Binding Path=Details}"></TextBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="DeptId">
+                <DataGridTemplateColumn Header="DeptId" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox Text="{Binding DeptId}" DataContext="{Binding Path=Details}"></TextBox>
@@ -75,31 +75,31 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="BtnSearch" Content="SEARCH" HorizontalAlignment="Left" Margin="229,6,0,0" VerticalAlignment="Top" Width="75" Click="btn_search_Click"/>
-        <TreeView x:Name="Tree" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="297" Margin="1306,44,0,0" VerticalAlignment="Top" Width="189">
+        <TreeView x:Name="Tree" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="297" Margin="1364,44,0,0" VerticalAlignment="Top" Width="189">
 
         </TreeView>
         <Label Content="Role" HorizontalAlignment="Left" Margin="48,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.778,0.051"/>
         <TextBox x:Name="inp_role" HorizontalAlignment="Left" Height="23" Margin="86,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="DeptId" HorizontalAlignment="Left" Margin="35,132,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="inp_deptid" HorizontalAlignment="Left" Height="23" Margin="86,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Department ID" HorizontalAlignment="Left" Margin="458,9,0,0" VerticalAlignment="Top"/>
-        <Label Content="Department Name " HorizontalAlignment="Left" Margin="434,44,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="inp_deptid1" HorizontalAlignment="Left" Height="23" Margin="551,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="inp_deptName1" HorizontalAlignment="Left" Height="23" Margin="551,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btn_add1" Content="ADD" HorizontalAlignment="Left" Margin="442,101,0,0" VerticalAlignment="Top" Width="75" Click="btn_add1_Click"/>
-        <Button x:Name="btn_delete1" Content="DELETE" HorizontalAlignment="Left" Margin="522,101,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btn_update1" Content="UPDATE" HorizontalAlignment="Left" Margin="602,101,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btn_display1" Content="DISPLAY" HorizontalAlignment="Left" Margin="682,101,0,0" VerticalAlignment="Top" Width="75" Click="btn_display1_Click"/>
-        <DataGrid x:Name="dg1" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="321" Margin="442,142,0,0" VerticalAlignment="Top" Width="190" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTemplateColumn Header="DeptId">
+        <Label Content="Department ID" HorizontalAlignment="Left" Margin="399,9,0,0" VerticalAlignment="Top"/>
+        <Label Content="Department Name " HorizontalAlignment="Left" Margin="375,44,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="inp_deptid1" HorizontalAlignment="Left" Height="23" Margin="492,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="inp_deptName1" HorizontalAlignment="Left" Height="23" Margin="492,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btn_add1" Content="ADD" HorizontalAlignment="Left" Margin="383,101,0,0" VerticalAlignment="Top" Width="75" Click="btn_add1_Click"/>
+        <Button x:Name="btn_delete1" Content="DELETE" HorizontalAlignment="Left" Margin="463,101,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btn_update1" Content="UPDATE" HorizontalAlignment="Left" Margin="543,101,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btn_display1" Content="DISPLAY" HorizontalAlignment="Left" Margin="623,101,0,0" VerticalAlignment="Top" Width="75" Click="btn_display1_Click"/>
+        <DataGrid x:Name="dg1" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="321" Margin="424,140,0,0" VerticalAlignment="Top" Width="190" AutoGenerateColumns="False" SelectedCellsChanged="dg1_SelectedCellsChanged">
+          <DataGrid.Columns>
+                <DataGridTemplateColumn Header="DeptId" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DeptId}" DataContext="{Binding Path=Details}"></TextBlock>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="DeptName">
+                <DataGridTemplateColumn Header="DeptName" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBox Text="{Binding DeptName}" DataContext="{Binding Path=Details}"></TextBox>
@@ -108,11 +108,100 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="dg2" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="321" Margin="702,142,0,0" VerticalAlignment="Top" Width="442" SelectedCellsChanged="dg2_SelectedCellsChanged"/>
-        <DataGrid x:Name="dg4" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="309" Margin="288,511,0,0" VerticalAlignment="Top" Width="698"/>
-        <TreeView x:Name="TreeView2" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="376" Margin="1271,417,0,0" VerticalAlignment="Top" Width="247">
-            
+        <DataGrid x:Name="dg2" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="321" Margin="711,142,0,0" VerticalAlignment="Top" Width="619" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="No" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Eno}" DataContext="{Binding}"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Name" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox x:Name="tb1"  LostFocus="TextBoxBase_OnLostFocus" Text="{Binding Path=EName}" DataContext="{Binding}"></TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    
+                </DataGridTemplateColumn>
+
+
+                <DataGridTemplateColumn Header="Salary" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Esalary}" LostFocus="UIElement_OnLostFocus" DataContext="{Binding}"></TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Role" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Role}" DataContext="{Binding}"></TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="DeptId" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding DeptId}" DataContext="{Binding}"></TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="DName" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding DeptName}" DataContext="{Binding}"></TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+
+            <DataGrid.ContextMenu>
+                <ContextMenu >
+                    <MenuItem Header="Filter" Click="MenuItem_OnClick" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+
+        </DataGrid>
+        <DataGrid x:Name="dg4" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="309" Margin="288,511,0,0" VerticalAlignment="Top" Width="698" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="No" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding EMPNO}" DataContext="{Binding}"></TextBlock>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding ENAME}" Header="Name"/>
+                <DataGridTemplateColumn Header="Salary" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding SALARY}" DataContext="{Binding}"></TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Role" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding ROLE}" DataContext="{Binding}"></TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="DeptId" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding DEPTID}" DataContext="{Binding}"></TextBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TreeView x:Name="TreeView2" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="376" Margin="1364,400,0,0" VerticalAlignment="Top" Width="189">
+
         </TreeView>
+        <Button x:Name="btn_View2" Content="View" HorizontalAlignment="Left" Margin="983,117,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.907,-0.65" Click="btn_View2_Click"/>
 
     </Grid>
 
