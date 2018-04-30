@@ -50,12 +50,17 @@ namespace WpfPractise.ADO.Connected
 
         public ObservableCollection<JoinTree> JoinTree2 { get; set; } = new ObservableCollection<JoinTree>();
 
-
+        //pagination
+        int count = 0, noofpages = 0, curr = 0;
 
         public Employee()
         {
             InitializeComponent();
 
+     
+
+            for(int i=1;i<=10;i++)
+            inp_noofrows.Items.Add(i);
 
             string constring = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
             connection = new OracleConnection(constring);
@@ -300,6 +305,23 @@ namespace WpfPractise.ADO.Connected
                 });
             }
 
+            
+
+
+
+            for (int i = 0; i < 100; i++)
+            {
+                JoinCol.Add(new Join()
+                {
+                    EName = i.ToString(),
+                    Role = "developer",
+                    Eno = i,
+                    Esalary = 10,
+                    DeptName = "ERM",
+                    DeptId = 1
+                });
+            }
+
             JoinCol2 = new ObservableCollection<Join>(JoinCol);
 
             dg2.DataContext = null;
@@ -316,6 +338,8 @@ namespace WpfPractise.ADO.Connected
             Tree3();
 
             flag = 0;
+
+            
         }
 
 
@@ -1041,6 +1065,102 @@ namespace WpfPractise.ADO.Connected
 
         string ena = "", eno = "", esa = "", di = "", dn = "", ro = "";
 
+        private void btn_next_Click(object sender, RoutedEventArgs e)
+        {
+            int no = int.Parse(inp_noofrows.Text);
+
+            int from = curr;
+            int to = curr + no;
+            if (to < JoinCol2.Count)
+            {
+                JoinCol.Clear();
+
+                int i = 0;
+                for (i = from; i < to; i++)
+                {
+                    JoinCol.Add(JoinCol2[i]);
+                }
+
+                curr = i;
+            }
+            else
+            {
+                if (from < JoinCol2.Count)
+                {
+                    JoinCol.Clear();
+                    int i = 0;
+                    for (i = from; i < JoinCol2.Count; i++)
+                    {
+                        JoinCol.Add(JoinCol2[i]);
+                    }
+
+                    curr = i;
+                }
+            }
+        }
+
+        private void btn_prev_Click(object sender, RoutedEventArgs e)
+        {
+           
+            int no = int.Parse(inp_noofrows.Text);
+
+            int from = curr - (no + no);
+                int to = curr-no;
+
+            if (from > 0)
+            {
+                JoinCol.Clear();
+
+                int i = 0;
+                for (i = from; i < to; i++)
+                {
+                    JoinCol.Add(JoinCol2[i]);
+                }
+
+                curr = i;
+            }
+
+            else
+            {
+                if (to > 0)
+                {
+                    JoinCol.Clear();
+                    int i = 0;
+                    for (i = 0; i < to; i++)
+                    {
+                        JoinCol.Add(JoinCol2[i]);
+                    }
+
+                    curr = i;
+                }
+            }
+
+        }
+
+        private void btn_last_Click(object sender, RoutedEventArgs e)
+        {
+            JoinCol.Clear();
+            int no = int.Parse(inp_noofrows.Text);
+            int i = 0;
+            for (i =JoinCol2.Count-no ; i<JoinCol2.Count; i++)
+            {
+                JoinCol.Add(JoinCol2[i]);
+            }
+            
+            curr = JoinCol2.Count;
+        }
+
+        private void btn_start_Click(object sender, RoutedEventArgs e)
+        {
+            JoinCol.Clear();
+            int no = int.Parse(inp_noofrows.Text);
+            int i = 0;
+            for (i = 0; i < no; i++)
+            {
+                JoinCol.Add(JoinCol2[i]);
+            }
+            curr = i;
+        }
 
         private void dg2_Filter_OnTextChanged(object sender, RoutedEventArgs e)
         {
@@ -1174,10 +1294,11 @@ namespace WpfPractise.ADO.Connected
 
         }
 
+
+        
         private void TextBox_OnLostFocus2(object sender, RoutedEventArgs e)
         {
-            JoinCol =  new ObservableCollection<Join>(JoinCol2);
-
+            JoinCol.Clear();
             TextBox tb = sender as TextBox;
             var colname = tb.DataContext.ToString();
             int flag2 = 0;
@@ -1196,22 +1317,24 @@ namespace WpfPractise.ADO.Connected
                 di = tb.Text;
 
 
+            for (int i = 0; i < JoinCol2.Count; i++)
+            {
+                JoinCol.Add(JoinCol2[i]);
+            }
+
+
+
             if (ena != "")
             {
                     for (int i = 0; i < JoinCol.Count; i++)
                     {
-                        if (!JoinCol[i].EName.ToLower().StartsWith(ena.ToLower()))
+                        if (!JoinCol2[i].EName.ToLower().StartsWith(ena.ToLower()))
                         {
                             JoinCol.RemoveAt(i);
-                            i--;
+                            //i--;
                         }
-                            
                     }
-
                     flag2 = 1;
-                
-               
-
             }
             if (esa != "")
             {
@@ -1279,10 +1402,15 @@ namespace WpfPractise.ADO.Connected
                 
             }
 
-
+            
             if (flag2 == 0)
             {
-                JoinCol = new ObservableCollection<Join>(JoinCol2);
+                JoinCol.Clear();
+                for (int i = 0; i < JoinCol2.Count; i++)
+                {
+                    JoinCol.Add(JoinCol2[i]);
+                }
+                
             }
             
         }

@@ -32,7 +32,9 @@
                 <Setter.Value>
                     <DataTemplate>
                         <StackPanel>
-                            --><!--<TextBlock Text="{TemplateBinding Content}"></TextBlock>--><!--
+                            -->
+        <!--<TextBlock Text="{TemplateBinding Content}"></TextBlock>-->
+        <!--
                             <TextBox Text="{Binding}" Width="100" ></TextBox>
                         </StackPanel>
                     </DataTemplate>
@@ -140,16 +142,16 @@
                                         <RowDefinition Height="{Binding ElementName=cb ,Path=IsChecked , Converter={StaticResource Heightconverer}}"  />
                                     </Grid.RowDefinitions>
                                     <TextBlock Background="Khaki" Grid.Row="0"  x:Name="TextBlock1" Text="{TemplateBinding Content}" ></TextBlock>
-                                    <TextBox Name="TextBox" Grid.Row="1" Background="Gainsboro" LostFocus="TextBox_OnLostFocus2" Visibility="{Binding ElementName=cb,Path=IsChecked,Converter={StaticResource FilterConverter}}" Width="100"></TextBox>
+                                    <TextBox Name="TextBox" Grid.Row="1" Background="Gainsboro" LostFocus="dg2_Filter_OnTextChanged" Visibility="{Binding ElementName=cb,Path=IsChecked,Converter={StaticResource FilterConverter}}" Width="100"></TextBox>
                                 </Grid>
                             </DataTemplate>
                         </Setter.Value>
                     </Setter>
                 </Style>
             </DataGrid.Resources>
-            
-            
-            
+
+
+
             <!--<DataGrid.Columns>
                 <DataGridTemplateColumn Header="No" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
@@ -243,16 +245,22 @@
 
         </TreeView>
         <Button x:Name="btn_View2" Content="View" HorizontalAlignment="Left" Margin="983,117,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.907,-0.65" Click="btn_View2_Click"/>
-        <Label Content="Name Starts with" HorizontalAlignment="Left" Margin="749,507,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="inp_NameFilter" HorizontalAlignment="Left" Height="23" Margin="854,511,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Dept" HorizontalAlignment="Left" Margin="811,552,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="inp_DeptFilter" HorizontalAlignment="Left" Margin="854,556,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Role" HorizontalAlignment="Left" Margin="809,596,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="inp_RoleFilter" HorizontalAlignment="Left" Margin="854,600,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Salary" HorizontalAlignment="Left" Margin="804,643,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="inp_SalaryFilter" HorizontalAlignment="Left" Height="23" Margin="854,647,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btn_filter" Content="Filter" HorizontalAlignment="Left" Margin="899,702,0,0" VerticalAlignment="Top" Width="75" Click="btn_filter_Click"/>
+        <Label Content="Name Starts with" HorizontalAlignment="Left" Margin="765,601,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="inp_NameFilter" HorizontalAlignment="Left" Height="23" Margin="870,605,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Dept" HorizontalAlignment="Left" Margin="827,646,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="inp_DeptFilter" HorizontalAlignment="Left" Margin="870,650,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Role" HorizontalAlignment="Left" Margin="825,690,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="inp_RoleFilter" HorizontalAlignment="Left" Margin="870,694,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Salary" HorizontalAlignment="Left" Margin="820,737,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="inp_SalaryFilter" HorizontalAlignment="Left" Height="23" Margin="870,741,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btn_filter" Content="Filter" HorizontalAlignment="Left" Margin="915,796,0,0" VerticalAlignment="Top" Width="75" Click="btn_filter_Click"/>
         <CheckBox x:Name="cb" Content="Filter"  HorizontalAlignment="Left" Margin="1117,117,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btn_start" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="765,478,0,0" VerticalAlignment="Top" Width="31" Click="btn_start_Click"/>
+        <Button x:Name="btn_prev" Content="&lt;" HorizontalAlignment="Left" Margin="820,478,0,0" VerticalAlignment="Top" Width="29" Click="btn_prev_Click"/>
+        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="870,475,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.158,0.231" Width="128" HorizontalContentAlignment="Center"/>
+        <Button x:Name="btn_next" Content="&gt;" HorizontalAlignment="Left" Margin="1019,479,0,0" VerticalAlignment="Top" Width="26" Click="btn_next_Click"/>
+        <Button x:Name="btn_last" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="1062,479,0,0" VerticalAlignment="Top" Width="24" Click="btn_last_Click"/>
+        <ComboBox x:Name="inp_noofrows" HorizontalAlignment="Left" Margin="1199,476,0,0" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 
