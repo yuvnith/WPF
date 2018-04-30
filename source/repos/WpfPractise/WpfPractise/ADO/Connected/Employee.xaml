@@ -27,6 +27,22 @@
             <TextBlock Text="{Binding EName}"></TextBlock>
         </HierarchicalDataTemplate>
 
+        <!--<Style TargetType="{x:Type DataGridCell}">
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <StackPanel>
+                            --><!--<TextBlock Text="{TemplateBinding Content}"></TextBlock>--><!--
+                            <TextBox Text="{Binding}" Width="100" ></TextBox>
+                        </StackPanel>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>-->
+
+        <local:FilterConverter x:Key="FilterConverter"/>
+
+        <local:gridHeightconverer x:Key="Heightconverer"/>
 
     </Window.Resources>
 
@@ -41,7 +57,7 @@
         <Button x:Name="btn_update" Content="UPDATE" HorizontalAlignment="Left" Margin="96,185,0,0" VerticalAlignment="Top" Width="75" Click="btn_update_Click"/>
         <Button Content="DELETE" HorizontalAlignment="Left" Margin="183,185,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Button x:Name="btn_display" Content="DISPLAY" HorizontalAlignment="Left" Margin="272,185,0,0" VerticalAlignment="Top" Width="75" Click="btn_display_Click"/>
-        <DataGrid x:Name="dg" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="237" Margin="10,226,0,0" VerticalAlignment="Top" Width="337" AutoGenerateColumns="False">
+        <DataGrid x:Name="dg" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="237" Margin="10,226,0,0" VerticalAlignment="Top" Width="337" AutoGenerateColumns="False" ColumnWidth="*">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="No" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
@@ -91,7 +107,7 @@
         <Button x:Name="btn_update1" Content="UPDATE" HorizontalAlignment="Left" Margin="543,101,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="btn_display1" Content="DISPLAY" HorizontalAlignment="Left" Margin="623,101,0,0" VerticalAlignment="Top" Width="75" Click="btn_display1_Click"/>
         <DataGrid x:Name="dg1" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="321" Margin="424,140,0,0" VerticalAlignment="Top" Width="190" AutoGenerateColumns="False" SelectedCellsChanged="dg1_SelectedCellsChanged">
-          <DataGrid.Columns>
+            <DataGrid.Columns>
                 <DataGridTemplateColumn Header="DeptId" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -108,8 +124,33 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="dg2" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="321" Margin="711,142,0,0" VerticalAlignment="Top" Width="619" AutoGenerateColumns="False" >
-            <DataGrid.Columns>
+        <DataGrid x:Name="dg2" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="321" Margin="711,142,0,0" VerticalAlignment="Top" Width="619" AutoGenerateColumns="True" >
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}" >
+                    <Setter Property="ContentTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="{Binding ElementName=cb ,Path=IsChecked , Converter={StaticResource Heightconverer}}"  />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Background="Khaki" Grid.Row="0"  x:Name="TextBlock1" Text="{TemplateBinding Content}" ></TextBlock>
+                                    <TextBox Name="TextBox" Grid.Row="1" Background="Gainsboro" LostFocus="TextBox_OnLostFocus2" Visibility="{Binding ElementName=cb,Path=IsChecked,Converter={StaticResource FilterConverter}}" Width="100"></TextBox>
+                                </Grid>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.Resources>
+            
+            
+            
+            <!--<DataGrid.Columns>
                 <DataGridTemplateColumn Header="No" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -156,7 +197,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-            </DataGrid.Columns>
+            </DataGrid.Columns>-->
 
             <DataGrid.ContextMenu>
                 <ContextMenu >
@@ -165,7 +206,7 @@
             </DataGrid.ContextMenu>
 
         </DataGrid>
-        <DataGrid x:Name="dg4" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="309" Margin="288,511,0,0" VerticalAlignment="Top" Width="698" AutoGenerateColumns="False">
+        <DataGrid x:Name="dg4" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="309" Margin="10,507,0,0" VerticalAlignment="Top" Width="688" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="No" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
@@ -202,6 +243,16 @@
 
         </TreeView>
         <Button x:Name="btn_View2" Content="View" HorizontalAlignment="Left" Margin="983,117,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.907,-0.65" Click="btn_View2_Click"/>
+        <Label Content="Name Starts with" HorizontalAlignment="Left" Margin="749,507,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="inp_NameFilter" HorizontalAlignment="Left" Height="23" Margin="854,511,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Dept" HorizontalAlignment="Left" Margin="811,552,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="inp_DeptFilter" HorizontalAlignment="Left" Margin="854,556,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Role" HorizontalAlignment="Left" Margin="809,596,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="inp_RoleFilter" HorizontalAlignment="Left" Margin="854,600,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Salary" HorizontalAlignment="Left" Margin="804,643,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="inp_SalaryFilter" HorizontalAlignment="Left" Height="23" Margin="854,647,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btn_filter" Content="Filter" HorizontalAlignment="Left" Margin="899,702,0,0" VerticalAlignment="Top" Width="75" Click="btn_filter_Click"/>
+        <CheckBox x:Name="cb" Content="Filter"  HorizontalAlignment="Left" Margin="1117,117,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 

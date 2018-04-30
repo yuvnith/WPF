@@ -2,9 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.OracleClient;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -16,6 +18,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+
 using System.Windows.Shapes;
 
 namespace WpfPractise.ADO.Connected
@@ -23,7 +26,7 @@ namespace WpfPractise.ADO.Connected
     /// <summary>
     /// Interaction logic for Employee.xaml
     /// </summary>
-    public partial class Employee : Window
+    public partial class Employee
     {
         OracleConnection connection;
         OracleCommand command;
@@ -38,19 +41,16 @@ namespace WpfPractise.ADO.Connected
 
         public ObservableCollection<Join> JoinCol { get; set; } = new ObservableCollection<Join>();
 
-        public List<Join> FilterCol { get; set; } = new List<Join>();
+        public ObservableCollection<Join> JoinCol2 { get; set; } = new ObservableCollection<Join>();
+
+        public ObservableCollection<Join> FilterCol { get; set; } = new ObservableCollection<Join>();
 
         public ObservableCollection<Manager> JoinTree { get; set; } = new ObservableCollection<Manager>();
 
 
         public ObservableCollection<JoinTree> JoinTree2 { get; set; } = new ObservableCollection<JoinTree>();
-        public enum Roles
-        {
-            Manager = 3,
-            Lead = 2,
-            Developer = 1,
-            Tester = 1
-        }
+
+
 
         public Employee()
         {
@@ -69,6 +69,7 @@ namespace WpfPractise.ADO.Connected
             display2();
 
             Tree3();
+            FilterGuiLoad();
 
         }
 
@@ -299,14 +300,19 @@ namespace WpfPractise.ADO.Connected
                 });
             }
 
+            JoinCol2 = new ObservableCollection<Join>(JoinCol);
+
             dg2.DataContext = null;
+
             dg2.DataContext = JoinCol;
 
-            if (dg2.ItemsSource == null)
-            {
-                dg2.Items.Clear();
-                dg2.ItemsSource = JoinCol;
-            }
+            
+
+            //if (dg2.DataContext == null)
+            //{
+            //    //dg2.Items.Clear();
+            //    dg2.DataContext = JoinCol;
+            //}
             Tree3();
 
             flag = 0;
@@ -877,15 +883,13 @@ namespace WpfPractise.ADO.Connected
                 TextBox tb = sender as TextBox;
                 string name = tb.Text;
 
-
-
                 FilterCol.Clear();
                 for (int i = 0; i < JoinCol.Count; i++)
                 {
-                    if(JoinCol[i].EName.StartsWith(name))
+                    if (JoinCol[i].EName.StartsWith(name))
                         FilterCol.Add(JoinCol[i]);
                 }
-                
+
                 int c = dg2.Items.Count;
                 for (int i = c - 1; i > 0; i--)
                 {
@@ -895,6 +899,8 @@ namespace WpfPractise.ADO.Connected
                 {
                     dg2.Items.Add(f);
                 }
+
+
 
 
             }
@@ -915,7 +921,7 @@ namespace WpfPractise.ADO.Connected
 
             for (int j = 0; j < FilterCol.Count; j++)
             {
-                if(FilterCol[j].EName.ToString() != sal)
+                if (FilterCol[j].EName.ToString() != sal)
                     FilterCol.RemoveAt(j);
 
             }
@@ -942,6 +948,343 @@ namespace WpfPractise.ADO.Connected
             }
 
 
+        }
+
+        public void FilterGuiLoad()
+        {
+            inp_DeptFilter.Items.Add("Any");
+            inp_RoleFilter.Items.Add("Any");
+            foreach (var d in DeptCol)
+            {
+                inp_DeptFilter.Items.Add(d.DeptName);
+            }
+
+            var distinctRoles = JoinCol.GroupBy(user => user.Role.ToLower())
+                .Select(g => g.First());
+
+            foreach (var distinctRole in distinctRoles)
+            {
+                inp_RoleFilter.Items.Add(distinctRole.Role);
+            }
+        }
+
+
+        private void btn_filter_Click(object sender, RoutedEventArgs e)
+        {
+            var temp = new ObservableCollection<Join>();
+
+            if (inp_NameFilter.Text != "")
+            {
+                foreach (var VARIABLE in JoinCol)
+                {
+                    if (VARIABLE.EName.ToString().StartsWith(inp_NameFilter.Text))
+                        temp.Add(VARIABLE);
+                }
+            }
+            else
+            {
+                foreach (var VARIABLE in JoinCol)
+                {
+                    temp.Add(VARIABLE);
+                }
+            }
+            var temp2 = new ObservableCollection<Join>();
+            if (inp_DeptFilter.Text != "Any")
+            {
+                foreach (var t in temp)
+                {
+                    if (t.DeptName.ToLower() == inp_DeptFilter.Text.ToLower())
+                        temp2.Add(t);
+                }
+            }
+            else
+            {
+                temp2 = new ObservableCollection<Join>(temp);
+            }
+
+
+            var temp3 = new ObservableCollection<Join>();
+            if (inp_RoleFilter.Text != "Any")
+            {
+                foreach (var t in temp2)
+                {
+                    if (t.Role.ToLower() == inp_DeptFilter.Text.ToLower())
+                        temp3.Add(t);
+                }
+            }
+            else
+            {
+                temp3 = new ObservableCollection<Join>(temp2);
+            }
+
+
+            var temp4 = new ObservableCollection<Join>();
+            if (inp_SalaryFilter.Text != "")
+            {
+                foreach (var t in temp3)
+                {
+                    if (t.Esalary.ToString() == inp_SalaryFilter.Text)
+                        temp4.Add(t);
+                }
+            }
+            else
+            {
+                temp4 = new ObservableCollection<Join>(temp3);
+            }
+
+            dg2.ItemsSource = temp4;
+
+            inp_DeptFilter.Text = "Any";
+            inp_RoleFilter.Text = "Any";
+
+        }
+
+        string ena = "", eno = "", esa = "", di = "", dn = "", ro = "";
+
+
+        private void dg2_Filter_OnTextChanged(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+
+            var colname = tb.DataContext.ToString();
+            int flag2 = 0;
+
+            if (colname.ToLower() == "ename")
+                ena = tb.Text;
+            else if (colname.ToLower() == "esalary")
+                esa = tb.Text;
+            else if (colname.ToLower() == "role")
+                ro = tb.Text;
+            else if (colname.ToLower() == "eno")
+                eno = tb.Text;
+            else if (colname.ToLower() == "deptname")
+                dn = tb.Text;
+            else if (colname.ToLower() == "deptid")
+                di = tb.Text;
+
+
+            string condition = "select * from employees where ";
+            command.Parameters.Clear();
+            if (ena != "")
+            {
+                if (flag2 == 0)
+                {
+                    condition += " ename Like :ENAME";
+                    command.Parameters.AddWithValue("ENAME", ena);
+                    flag2 = 1;
+                }
+                else
+                {
+                    condition += " and ename Like :ENAME";
+                    command.Parameters.AddWithValue("ENAME", ena);
+                }
+
+            }
+            if (esa != "")
+            {
+                if (flag2 == 0)
+                {
+                    condition += " salary=:SALARY";
+                    command.Parameters.AddWithValue("SALARY", esa);
+                    flag2 = 1;
+                }
+                else
+                {
+                    condition += " and salary=:SALARY";
+                    command.Parameters.AddWithValue("SALARY", esa);
+                }
+
+            }
+            if (ro != "")
+            {
+                if (flag2 == 0)
+                {
+                    condition += " role like :ROLE";
+                    command.Parameters.AddWithValue("ROLE", ro);
+                    flag2 = 1;
+                }
+                else
+                {
+                    condition += " and role Like :ROLE";
+                    command.Parameters.AddWithValue("ROLE", ro);
+                }
+
+            }
+            if (eno != "")
+            {
+                if (flag2 == 0)
+                {
+                    condition += " empno=:EMPNO";
+                    command.Parameters.AddWithValue("EMPNO", eno);
+                    flag2 = 1;
+                }
+                else
+                {
+                    condition += " and empno=:EMPNO";
+                    command.Parameters.AddWithValue("EMPNO", eno);
+                }
+
+            }
+            if (di != "")
+            {
+                if (flag2 == 0)
+                {
+                    condition += " deptid=:DEPTID";
+                    command.Parameters.AddWithValue("DEPTID", di);
+                    flag2 = 1;
+                }
+                else
+                {
+                    condition += " and deptid=:DEPTID";
+                    command.Parameters.AddWithValue("DEPTID", di);
+                }
+
+            }
+           
+
+
+            command.CommandText = condition;
+            if (flag2 == 0)
+            {
+                command.CommandText = "select * from employees";
+            }
+            
+            if (connection.State == ConnectionState.Closed)
+                connection.Open();
+            OracleDataReader dataReader = command.ExecuteReader(CommandBehavior.CloseConnection);
+            DataTable dataTable = new DataTable();
+            dataTable.Load(dataReader);
+
+            JoinCol.Clear();
+            JoinCol.Clear();
+            foreach (DataRow dataTableRow in dataTable.Rows)
+            {
+
+                JoinCol.Add(new Join()
+                {
+                    Eno = int.Parse(dataTableRow.ItemArray[0].ToString()),
+                    EName = dataTableRow.ItemArray[1].ToString(),
+                    Esalary = int.Parse(dataTableRow.ItemArray[2].ToString()),
+                    Role = dataTableRow.ItemArray[3].ToString(),
+                    DeptId = int.Parse(dataTableRow.ItemArray[4].ToString())
+
+
+                });
+            }
+
+        }
+
+        private void TextBox_OnLostFocus2(object sender, RoutedEventArgs e)
+        {
+            JoinCol =  new ObservableCollection<Join>(JoinCol2);
+
+            TextBox tb = sender as TextBox;
+            var colname = tb.DataContext.ToString();
+            int flag2 = 0;
+
+            if (colname.ToLower() == "ename")
+                ena = tb.Text;
+            else if (colname.ToLower() == "esalary")
+                esa = tb.Text;
+            else if (colname.ToLower() == "role")
+                ro = tb.Text;
+            else if (colname.ToLower() == "eno")
+                eno = tb.Text;
+            else if (colname.ToLower() == "deptname")
+                dn = tb.Text;
+            else if (colname.ToLower() == "deptid")
+                di = tb.Text;
+
+
+            if (ena != "")
+            {
+                    for (int i = 0; i < JoinCol.Count; i++)
+                    {
+                        if (!JoinCol[i].EName.ToLower().StartsWith(ena.ToLower()))
+                        {
+                            JoinCol.RemoveAt(i);
+                            i--;
+                        }
+                            
+                    }
+
+                    flag2 = 1;
+                
+               
+
+            }
+            if (esa != "")
+            {
+                
+                    for (int i = 0; i < JoinCol.Count; i++)
+                    {
+                        if (JoinCol[i].Esalary.ToString().ToLower() != esa.ToLower())
+                            JoinCol.RemoveAt(i);
+                    }
+
+
+                    flag2 = 1;
+             
+                
+
+            }
+            if (ro != "")
+            {
+                
+
+                    for (int i = 0; i < JoinCol.Count; i++)
+                    {
+                        if (JoinCol[i].Role.ToLower() != ro.ToLower())
+                            JoinCol.RemoveAt(i);
+                    }
+                    flag2 = 1;
+                
+                
+
+            }
+            if (eno != "")
+            {
+               
+                    for (int i = 0; i < JoinCol.Count; i++)
+                    {
+                        if (JoinCol[i].Eno.ToString().ToLower() != eno.ToLower())
+                            JoinCol.RemoveAt(i);
+                    }
+                    flag2 = 1;
+               
+               
+
+            }
+            if (di != "")
+            {
+               
+                    for (int i = 0; i < JoinCol.Count; i++)
+                    {
+                        if (JoinCol[i].DeptId.ToString().ToLower() != di.ToLower())
+                            JoinCol.RemoveAt(i);
+                    }
+                    flag2 = 1;
+                
+            }
+
+            if (dn != "")
+            {
+
+                    for (int i = 0; i < JoinCol.Count; i++)
+                    {
+                        if (!JoinCol[i].DeptName.ToLower().StartsWith(dn.ToLower()))
+                            JoinCol.RemoveAt(i);
+                    }
+                    flag2 = 1;
+                
+            }
+
+
+            if (flag2 == 0)
+            {
+                JoinCol = new ObservableCollection<Join>(JoinCol2);
+            }
+            
         }
     }
 
@@ -1025,5 +1368,44 @@ namespace WpfPractise.ADO.Connected
         public ObservableCollection<JoinTree> Emp { get; set; }
     }
 
+    public class FilterConverter:IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
 
+
+                string b = value.ToString();
+                if (b.Equals("True"))
+                    return Visibility.Visible;
+                
+            }
+     
+                return Visibility.Hidden;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class gridHeightconverer : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+            {
+                if (value.ToString() == "True")
+                    return "*";
+            }
+            return 0;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
