@@ -85,6 +85,24 @@
     <Compile Include="ADO\Disconnected\ReadingFromExcel.xaml.cs">
       <DependentUpon>ReadingFromExcel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ADO\Pages\Departments.xaml.cs">
+      <DependentUpon>Departments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ADO\Pages\DeptAndEmployees.xaml.cs">
+      <DependentUpon>DeptAndEmployees.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ADO\Pages\EmployeeCRUD.xaml.cs">
+      <DependentUpon>EmployeeCRUD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ADO\Pages\FilterAndPagination.xaml.cs">
+      <DependentUpon>FilterAndPagination.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ADO\Pages\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ADO\Pages\Trees.xaml.cs">
+      <DependentUpon>Trees.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ControlProperty.xaml.cs">
       <DependentUpon>ControlProperty.xaml</DependentUpon>
     </Compile>
@@ -157,6 +175,30 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ADO\Disconnected\ReadingFromExcel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ADO\Pages\Departments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ADO\Pages\DeptAndEmployees.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ADO\Pages\EmployeeCRUD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ADO\Pages\FilterAndPagination.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ADO\Pages\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ADO\Pages\Trees.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -275,9 +317,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ADO\Image\" />
-    <Folder Include="Mocks\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

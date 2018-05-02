@@ -57,10 +57,10 @@ namespace WpfPractise.ADO.Connected
         {
             InitializeComponent();
 
-     
 
-            for(int i=1;i<=10;i++)
-            inp_noofrows.Items.Add(i);
+
+            for (int i = 1; i <= 10; i++)
+                inp_noofrows.Items.Add(i);
 
             string constring = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
             connection = new OracleConnection(constring);
@@ -74,7 +74,7 @@ namespace WpfPractise.ADO.Connected
             display2();
 
             Tree3();
-            FilterGuiLoad();
+            
 
         }
 
@@ -305,22 +305,22 @@ namespace WpfPractise.ADO.Connected
                 });
             }
 
-            
 
 
 
-            for (int i = 0; i < 100; i++)
-            {
-                JoinCol.Add(new Join()
-                {
-                    EName = i.ToString(),
-                    Role = "developer",
-                    Eno = i,
-                    Esalary = 10,
-                    DeptName = "ERM",
-                    DeptId = 1
-                });
-            }
+
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    JoinCol.Add(new Join()
+            //    {
+            //        EName = i.ToString(),
+            //        Role = "developer",
+            //        Eno = i,
+            //        Esalary = 10,
+            //        DeptName = "ERM",
+            //        DeptId = 1
+            //    });
+            //}
 
             JoinCol2 = new ObservableCollection<Join>(JoinCol);
 
@@ -328,7 +328,7 @@ namespace WpfPractise.ADO.Connected
 
             dg2.DataContext = JoinCol;
 
-            
+
 
             //if (dg2.DataContext == null)
             //{
@@ -339,7 +339,7 @@ namespace WpfPractise.ADO.Connected
 
             flag = 0;
 
-            
+
         }
 
 
@@ -974,101 +974,24 @@ namespace WpfPractise.ADO.Connected
 
         }
 
-        public void FilterGuiLoad()
-        {
-            inp_DeptFilter.Items.Add("Any");
-            inp_RoleFilter.Items.Add("Any");
-            foreach (var d in DeptCol)
-            {
-                inp_DeptFilter.Items.Add(d.DeptName);
-            }
-
-            var distinctRoles = JoinCol.GroupBy(user => user.Role.ToLower())
-                .Select(g => g.First());
-
-            foreach (var distinctRole in distinctRoles)
-            {
-                inp_RoleFilter.Items.Add(distinctRole.Role);
-            }
-        }
+      
 
 
-        private void btn_filter_Click(object sender, RoutedEventArgs e)
-        {
-            var temp = new ObservableCollection<Join>();
+       
 
-            if (inp_NameFilter.Text != "")
-            {
-                foreach (var VARIABLE in JoinCol)
-                {
-                    if (VARIABLE.EName.ToString().StartsWith(inp_NameFilter.Text))
-                        temp.Add(VARIABLE);
-                }
-            }
-            else
-            {
-                foreach (var VARIABLE in JoinCol)
-                {
-                    temp.Add(VARIABLE);
-                }
-            }
-            var temp2 = new ObservableCollection<Join>();
-            if (inp_DeptFilter.Text != "Any")
-            {
-                foreach (var t in temp)
-                {
-                    if (t.DeptName.ToLower() == inp_DeptFilter.Text.ToLower())
-                        temp2.Add(t);
-                }
-            }
-            else
-            {
-                temp2 = new ObservableCollection<Join>(temp);
-            }
-
-
-            var temp3 = new ObservableCollection<Join>();
-            if (inp_RoleFilter.Text != "Any")
-            {
-                foreach (var t in temp2)
-                {
-                    if (t.Role.ToLower() == inp_DeptFilter.Text.ToLower())
-                        temp3.Add(t);
-                }
-            }
-            else
-            {
-                temp3 = new ObservableCollection<Join>(temp2);
-            }
-
-
-            var temp4 = new ObservableCollection<Join>();
-            if (inp_SalaryFilter.Text != "")
-            {
-                foreach (var t in temp3)
-                {
-                    if (t.Esalary.ToString() == inp_SalaryFilter.Text)
-                        temp4.Add(t);
-                }
-            }
-            else
-            {
-                temp4 = new ObservableCollection<Join>(temp3);
-            }
-
-            dg2.ItemsSource = temp4;
-
-            inp_DeptFilter.Text = "Any";
-            inp_RoleFilter.Text = "Any";
-
-        }
-
-        string ena = "", eno = "", esa = "", di = "", dn = "", ro = "";
 
         private void btn_next_Click(object sender, RoutedEventArgs e)
         {
-            int no = int.Parse(inp_noofrows.Text);
+            //int no = int.Parse(inp_noofrows.Text);
 
+            int gridh = int.Parse(Math.Abs(dg2.Height).ToString());
+            double headerh = (Math.Abs(dg2.ColumnHeaderHeight));
+
+
+            int no2 = int.Parse(Math.Round(dg2.Height).ToString())-int.Parse(Math.Round(dg2.ColumnHeaderHeight).ToString());
+
+            int cellh = int.Parse(Math.Round(dg2.RowHeight).ToString());
+            int no = no2 / cellh;
             int from = curr;
             int to = curr + no;
             if (to < JoinCol2.Count)
@@ -1101,11 +1024,11 @@ namespace WpfPractise.ADO.Connected
 
         private void btn_prev_Click(object sender, RoutedEventArgs e)
         {
-           
+
             int no = int.Parse(inp_noofrows.Text);
 
             int from = curr - (no + no);
-                int to = curr-no;
+            int to = curr - no;
 
             if (from > 0)
             {
@@ -1142,11 +1065,11 @@ namespace WpfPractise.ADO.Connected
             JoinCol.Clear();
             int no = int.Parse(inp_noofrows.Text);
             int i = 0;
-            for (i =JoinCol2.Count-no ; i<JoinCol2.Count; i++)
+            for (i = JoinCol2.Count - no; i < JoinCol2.Count; i++)
             {
                 JoinCol.Add(JoinCol2[i]);
             }
-            
+
             curr = JoinCol2.Count;
         }
 
@@ -1260,7 +1183,7 @@ namespace WpfPractise.ADO.Connected
                 }
 
             }
-           
+
 
 
             command.CommandText = condition;
@@ -1268,7 +1191,7 @@ namespace WpfPractise.ADO.Connected
             {
                 command.CommandText = "select * from employees";
             }
-            
+
             if (connection.State == ConnectionState.Closed)
                 connection.Open();
             OracleDataReader dataReader = command.ExecuteReader(CommandBehavior.CloseConnection);
@@ -1294,8 +1217,19 @@ namespace WpfPractise.ADO.Connected
 
         }
 
+        private void btn_delete1_Click(object sender, RoutedEventArgs e)
+        {
 
-        
+        }
+
+        private void btn_update1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        string ena = "", eno = "", esa = "", di = "", dn = "", ro = "";
+
+
         private void TextBox_OnLostFocus2(object sender, RoutedEventArgs e)
         {
             JoinCol.Clear();
@@ -1317,92 +1251,86 @@ namespace WpfPractise.ADO.Connected
                 di = tb.Text;
 
 
-            for (int i = 0; i < JoinCol2.Count; i++)
+            foreach (var j in JoinCol2)
             {
-                JoinCol.Add(JoinCol2[i]);
+                JoinCol.Add(j);
             }
-
-
 
             if (ena != "")
             {
-                    for (int i = 0; i < JoinCol.Count; i++)
+                for (int i = 0; i < JoinCol2.Count; i++)
+                {
+                    if(!JoinCol2[i].EName.StartsWith(ena))
                     {
-                        if (!JoinCol2[i].EName.ToLower().StartsWith(ena.ToLower()))
-                        {
-                            JoinCol.RemoveAt(i);
-                            //i--;
-                        }
+                        if (JoinCol.Contains(JoinCol2[i]))
+                            JoinCol.Remove(JoinCol2[i]);
                     }
-                    flag2 = 1;
+                }
+                flag2 = 1;
             }
+
+
             if (esa != "")
             {
-                
-                    for (int i = 0; i < JoinCol.Count; i++)
+
+                for (int i = 0; i < JoinCol2.Count; i++)
+                {
+                    if (JoinCol2[i].Esalary.ToString().ToLower() != esa.ToLower())
                     {
-                        if (JoinCol[i].Esalary.ToString().ToLower() != esa.ToLower())
-                            JoinCol.RemoveAt(i);
+                        if (JoinCol.Contains(JoinCol2[i]))
+                            JoinCol.Remove(JoinCol2[i]);
                     }
-
-
-                    flag2 = 1;
-             
-                
-
+                }
+                flag2 = 1;
             }
+
+
             if (ro != "")
             {
-                
-
-                    for (int i = 0; i < JoinCol.Count; i++)
-                    {
-                        if (JoinCol[i].Role.ToLower() != ro.ToLower())
-                            JoinCol.RemoveAt(i);
-                    }
-                    flag2 = 1;
-                
-                
-
+                for (int i = 0; i < JoinCol2.Count; i++)
+                {
+                    if (!JoinCol2[i].Role.ToLower().StartsWith(ro))
+                        if (JoinCol.Contains(JoinCol2[i]))
+                            JoinCol.Remove(JoinCol2[i]);
+                }
+                flag2 = 1;
             }
+
+
             if (eno != "")
             {
-               
-                    for (int i = 0; i < JoinCol.Count; i++)
-                    {
-                        if (JoinCol[i].Eno.ToString().ToLower() != eno.ToLower())
-                            JoinCol.RemoveAt(i);
-                    }
-                    flag2 = 1;
-               
-               
-
+                for (int i = 0; i < JoinCol2.Count; i++)
+                {
+                    if (JoinCol2[i].Eno.ToString().ToLower() != eno.ToLower())
+                        if(JoinCol.Contains(JoinCol2[i]))
+                        JoinCol.Remove(JoinCol2[i]);
+                }
+                flag2 = 1;
             }
+
             if (di != "")
             {
-               
-                    for (int i = 0; i < JoinCol.Count; i++)
-                    {
-                        if (JoinCol[i].DeptId.ToString().ToLower() != di.ToLower())
-                            JoinCol.RemoveAt(i);
-                    }
-                    flag2 = 1;
-                
+                for (int i = 0; i < JoinCol2.Count; i++)
+                {
+                    if (JoinCol2[i].DeptId.ToString().ToLower() != di.ToLower())
+                        if (JoinCol.Contains(JoinCol2[i]))
+                            JoinCol.Remove(JoinCol2[i]);
+                }
+                flag2 = 1;
             }
 
             if (dn != "")
             {
-
-                    for (int i = 0; i < JoinCol.Count; i++)
-                    {
-                        if (!JoinCol[i].DeptName.ToLower().StartsWith(dn.ToLower()))
-                            JoinCol.RemoveAt(i);
-                    }
-                    flag2 = 1;
-                
+                for (int i = 0; i < JoinCol.Count; i++)
+                {
+                    if (!JoinCol2[i].DeptName.ToLower().StartsWith(dn.ToLower()))
+                        if (JoinCol.Contains(JoinCol2[i]))
+                            JoinCol.Remove(JoinCol2[i]);
+                }
+                flag2 = 1;
             }
 
-            
+
             if (flag2 == 0)
             {
                 JoinCol.Clear();
@@ -1410,9 +1338,9 @@ namespace WpfPractise.ADO.Connected
                 {
                     JoinCol.Add(JoinCol2[i]);
                 }
-                
+
             }
-            
+
         }
     }
 
@@ -1496,7 +1424,7 @@ namespace WpfPractise.ADO.Connected
         public ObservableCollection<JoinTree> Emp { get; set; }
     }
 
-    public class FilterConverter:IValueConverter
+    public class FilterConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -1507,10 +1435,10 @@ namespace WpfPractise.ADO.Connected
                 string b = value.ToString();
                 if (b.Equals("True"))
                     return Visibility.Visible;
-                
+
             }
-     
-                return Visibility.Hidden;
+
+            return Visibility.Hidden;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
