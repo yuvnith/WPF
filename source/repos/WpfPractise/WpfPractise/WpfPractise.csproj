@@ -85,6 +85,9 @@
     <Compile Include="ADO\Disconnected\ReadingFromExcel.xaml.cs">
       <DependentUpon>ReadingFromExcel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ADO\Pages\CustomFilter.xaml.cs">
+      <DependentUpon>CustomFilter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ADO\Pages\Departments.xaml.cs">
       <DependentUpon>Departments.xaml</DependentUpon>
     </Compile>
@@ -93,6 +96,9 @@
     </Compile>
     <Compile Include="ADO\Pages\EmployeeCRUD.xaml.cs">
       <DependentUpon>EmployeeCRUD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ADO\Pages\Filter2.xaml.cs">
+      <DependentUpon>Filter2.xaml</DependentUpon>
     </Compile>
     <Compile Include="ADO\Pages\FilterAndPagination.xaml.cs">
       <DependentUpon>FilterAndPagination.xaml</DependentUpon>
@@ -178,6 +184,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ADO\Pages\CustomFilter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ADO\Pages\Departments.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -187,6 +197,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ADO\Pages\EmployeeCRUD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ADO\Pages\Filter2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

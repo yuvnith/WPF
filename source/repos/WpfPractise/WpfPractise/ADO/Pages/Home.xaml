@@ -7,9 +7,13 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="Home">
-
+        <Page.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize"  Value="12"></Setter>
+            </Style>
+        </Page.Resources>
     <Grid>
-        <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Vertical" Margin="0,0,0,186">
             <TextBlock>
                 <Hyperlink NavigateUri="Home.xaml">Home</Hyperlink>
             </TextBlock>
@@ -28,6 +32,10 @@
             <TextBlock>
                 <Hyperlink NavigateUri="FilterAndPagination.xaml">Pagination and Filter</Hyperlink>
             </TextBlock>
+            <TextBlock>
+                <Hyperlink NavigateUri="Filter2.xaml">Filter2</Hyperlink>
+            </TextBlock>
         </StackPanel>
+
     </Grid>
 </Page>

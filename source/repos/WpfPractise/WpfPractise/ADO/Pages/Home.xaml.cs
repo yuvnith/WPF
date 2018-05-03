@@ -24,5 +24,15 @@ namespace WpfPractise.ADO.Pages
         {
             InitializeComponent();
         }
+
+        private void Employee_click(object sender, RoutedEventArgs e)
+        {
+            //Uri uri = new Uri("EmployeeCRUD.xaml", UriKind.Relative);
+            //NavigationService?.Navigate(uri);
+            //NavigationService ns = NavigationService.GetNavigationService(this);
+            ////ns.Navigate(new Uri("EmployeeCRUD.xaml", UriKind.RelativeOrAbsolute));
+            //ns.Source = new Uri("EmployeeCRUD.xaml", UriKind.Relative);
+            //ns.Content = new Uri("EmployeeCRUD.xaml", UriKind.Relative);
+        }
     }
 }

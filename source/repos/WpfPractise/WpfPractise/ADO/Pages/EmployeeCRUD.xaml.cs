@@ -41,6 +41,11 @@ namespace WpfPractise.ADO.Pages
             display();
         }
 
+        public EmployeeCRUD(string str)
+        {
+            
+        }
+
         public void btn_add_Click(object sender, RoutedEventArgs e)
         {
             string name = inp_name.Text;
