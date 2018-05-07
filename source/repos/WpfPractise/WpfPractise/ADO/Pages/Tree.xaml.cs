@@ -21,21 +21,19 @@ using WpfPractise.ADO.Connected;
 namespace WpfPractise.ADO.Pages
 {
     /// <summary>
-    /// Interaction logic for Trees.xaml
+    /// Interaction logic for Tree.xaml
     /// </summary>
-    public partial class Trees : Page
+    public partial class Tree : Page
     {
-
         OracleConnection connection;
         OracleCommand command;
 
         public ObservableCollection<Temp> collection2 { get; set; } = new ObservableCollection<Temp>();
         public ObservableCollection<JoinTree> JoinTree2 { get; set; } = new ObservableCollection<JoinTree>();
 
-        public Trees()
+        public Tree()
         {
             InitializeComponent();
-
             string constring = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
             connection = new OracleConnection(constring);
             command = new OracleCommand();
@@ -44,8 +42,6 @@ namespace WpfPractise.ADO.Pages
             generate();
             Tree3();
         }
-
-
         public void generate()
         {
 
@@ -79,8 +75,8 @@ namespace WpfPractise.ADO.Pages
             }
 
 
-            Tree.DataContext = null;
-            Tree.DataContext = collection2;
+            Tree2.DataContext = null;
+            Tree2.DataContext = collection2;
         }
 
         public void Tree3()
@@ -211,7 +207,7 @@ namespace WpfPractise.ADO.Pages
             }
 
 
-            TreeView2.DataContext = JoinTree2;
+            TreeView.DataContext = JoinTree2;
 
         }
     }

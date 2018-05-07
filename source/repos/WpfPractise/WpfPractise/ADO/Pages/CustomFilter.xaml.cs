@@ -86,13 +86,13 @@ namespace WpfPractise.ADO.Pages
         
         public void Filter()
         {
-            Filter2 obj = new Filter2();
-            Filter2.JoinCol.Clear();
+            Filters2 obj = new Filters2();
+            Filters2.JoinCol.Clear();
 
 
             foreach (var j in obj.JoinCol2)
             {
-                Filter2.JoinCol.Add(j);
+                Filters2.JoinCol.Add(j);
             }
 
             foreach (var c in ControlsData)
@@ -119,7 +119,7 @@ namespace WpfPractise.ADO.Pages
 
         }
 
-        public void Ename(string val,string type,Filter2 obj)
+        public void Ename(string val,string type,Filters2 obj)
         {
             if (type == "StartsWith")
             {
@@ -127,8 +127,8 @@ namespace WpfPractise.ADO.Pages
                 {
                     if (!obj.JoinCol2[i].EName.StartsWith(val))
                     {
-                        if (Filter2.JoinCol.Contains(obj.JoinCol2[i]))
-                            Filter2.JoinCol.Remove(obj.JoinCol2[i]);
+                        if (Filters2.JoinCol.Contains(obj.JoinCol2[i]))
+                            Filters2.JoinCol.Remove(obj.JoinCol2[i]);
                     }
                 }
             }
@@ -138,8 +138,8 @@ namespace WpfPractise.ADO.Pages
                 {
                     if (!obj.JoinCol2[i].EName.EndsWith(val))
                     {
-                        if (Filter2.JoinCol.Contains(obj.JoinCol2[i]))
-                            Filter2.JoinCol.Remove(obj.JoinCol2[i]);
+                        if (Filters2.JoinCol.Contains(obj.JoinCol2[i]))
+                            Filters2.JoinCol.Remove(obj.JoinCol2[i]);
                     }
                 }
             }
@@ -149,13 +149,13 @@ namespace WpfPractise.ADO.Pages
                 {
                     if (obj.JoinCol2[i].EName != val)
                     {
-                        if (Filter2.JoinCol.Contains(obj.JoinCol2[i]))
-                            Filter2.JoinCol.Remove(obj.JoinCol2[i]);
+                        if (Filters2.JoinCol.Contains(obj.JoinCol2[i]))
+                            Filters2.JoinCol.Remove(obj.JoinCol2[i]);
                     }
                 }
             }
         }
-        public void DepId(string val, string type, Filter2 obj)
+        public void DepId(string val, string type, Filters2 obj)
         {
 
             if (type == "EqualTo")
@@ -164,14 +164,14 @@ namespace WpfPractise.ADO.Pages
                 {
                     if (obj.JoinCol2[i].DeptId != int.Parse(val))
                     {
-                        if (Filter2.JoinCol.Contains(obj.JoinCol2[i]))
-                            Filter2.JoinCol.Remove(obj.JoinCol2[i]);
+                        if (Filters2.JoinCol.Contains(obj.JoinCol2[i]))
+                            Filters2.JoinCol.Remove(obj.JoinCol2[i]);
                     }
                 }
             }
         }
 
-        public void DeptName(string val, string type, Filter2 obj)
+        public void DeptName(string val, string type, Filters2 obj)
         {
             if (type == "StartsWith")
             {
@@ -179,8 +179,8 @@ namespace WpfPractise.ADO.Pages
                 {
                     if (!obj.JoinCol2[i].DeptName.StartsWith(val))
                     {
-                        if (Filter2.JoinCol.Contains(obj.JoinCol2[i]))
-                            Filter2.JoinCol.Remove(obj.JoinCol2[i]);
+                        if (Filters2.JoinCol.Contains(obj.JoinCol2[i]))
+                            Filters2.JoinCol.Remove(obj.JoinCol2[i]);
                     }
                 }
             }
@@ -190,8 +190,8 @@ namespace WpfPractise.ADO.Pages
                 {
                     if (!obj.JoinCol2[i].DeptName.EndsWith(val))
                     {
-                        if (Filter2.JoinCol.Contains(obj.JoinCol2[i]))
-                            Filter2.JoinCol.Remove(obj.JoinCol2[i]);
+                        if (Filters2.JoinCol.Contains(obj.JoinCol2[i]))
+                            Filters2.JoinCol.Remove(obj.JoinCol2[i]);
                     }
                 }
             }
@@ -201,13 +201,13 @@ namespace WpfPractise.ADO.Pages
                 {
                     if (obj.JoinCol2[i].DeptName != val)
                     {
-                        if (Filter2.JoinCol.Contains(obj.JoinCol2[i]))
-                            Filter2.JoinCol.Remove(obj.JoinCol2[i]);
+                        if (Filters2.JoinCol.Contains(obj.JoinCol2[i]))
+                            Filters2.JoinCol.Remove(obj.JoinCol2[i]);
                     }
                 }
             }
         }
-        public void Esalary(string val, string type, Filter2 obj)
+        public void Esalary(string val, string type, Filters2 obj)
         {
             if (type == "EqualTo")
              {
@@ -215,13 +215,13 @@ namespace WpfPractise.ADO.Pages
                 {
                     if (obj.JoinCol2[i].Esalary != double.Parse(val))
                     {
-                        if (Filter2.JoinCol.Contains(obj.JoinCol2[i]))
-                            Filter2.JoinCol.Remove(obj.JoinCol2[i]);
+                        if (Filters2.JoinCol.Contains(obj.JoinCol2[i]))
+                            Filters2.JoinCol.Remove(obj.JoinCol2[i]);
                     }
                 }
             }
         }
-        public void Role(string val, string type, Filter2 obj)
+        public void Role(string val, string type, Filters2 obj)
         {
             if (type == "StartsWith")
             {
@@ -229,8 +229,8 @@ namespace WpfPractise.ADO.Pages
                 {
                     if (!obj.JoinCol2[i].Role.StartsWith(val))
                     {
-                        if (Filter2.JoinCol.Contains(obj.JoinCol2[i]))
-                            Filter2.JoinCol.Remove(obj.JoinCol2[i]);
+                        if (Filters2.JoinCol.Contains(obj.JoinCol2[i]))
+                            Filters2.JoinCol.Remove(obj.JoinCol2[i]);
                     }
                 }
             }
@@ -240,8 +240,8 @@ namespace WpfPractise.ADO.Pages
                 {
                     if (!obj.JoinCol2[i].Role.EndsWith(val))
                     {
-                        if (Filter2.JoinCol.Contains(obj.JoinCol2[i]))
-                            Filter2.JoinCol.Remove(obj.JoinCol2[i]);
+                        if (Filters2.JoinCol.Contains(obj.JoinCol2[i]))
+                            Filters2.JoinCol.Remove(obj.JoinCol2[i]);
                     }
                 }
             }
@@ -251,13 +251,13 @@ namespace WpfPractise.ADO.Pages
                 {
                     if (obj.JoinCol2[i].Role != val)
                     {
-                        if (Filter2.JoinCol.Contains(obj.JoinCol2[i]))
-                            Filter2.JoinCol.Remove(obj.JoinCol2[i]);
+                        if (Filters2.JoinCol.Contains(obj.JoinCol2[i]))
+                            Filters2.JoinCol.Remove(obj.JoinCol2[i]);
                     }
                 }
             }
         }
-        public void Eno(string val, string type, Filter2 obj)
+        public void Eno(string val, string type, Filters2 obj)
         {
             if (type == "EqualTo")
             {
@@ -265,8 +265,8 @@ namespace WpfPractise.ADO.Pages
                 {
                     if (obj.JoinCol2[i].Eno != int.Parse(val))
                     {
-                        if (Filter2.JoinCol.Contains(obj.JoinCol2[i]))
-                            Filter2.JoinCol.Remove(obj.JoinCol2[i]);
+                        if (Filters2.JoinCol.Contains(obj.JoinCol2[i]))
+                            Filters2.JoinCol.Remove(obj.JoinCol2[i]);
                     }
                 }
             }

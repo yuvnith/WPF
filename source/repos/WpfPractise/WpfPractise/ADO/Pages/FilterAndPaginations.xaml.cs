@@ -21,10 +21,11 @@ using WpfPractise.ADO.Connected;
 namespace WpfPractise.ADO.Pages
 {
     /// <summary>
-    /// Interaction logic for FilterAndPagination.xaml
+    /// Interaction logic for FilterAndPaginations.xaml
     /// </summary>
-    public partial class FilterAndPagination : Page
+    public partial class FilterAndPaginations : Page
     {
+        private int no = 0;
         OracleConnection connection;
         int flag = 0;
         OracleCommand command;
@@ -32,11 +33,11 @@ namespace WpfPractise.ADO.Pages
         public ObservableCollection<Join> JoinCol { get; set; } = new ObservableCollection<Join>();
 
         public ObservableCollection<Join> JoinCol2 { get; set; } = new ObservableCollection<Join>();
-
-        public FilterAndPagination()
+        public FilterAndPaginations()
         {
             InitializeComponent();
-            
+
+
             string constring = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
             connection = new OracleConnection(constring);
             command = new OracleCommand();
@@ -47,6 +48,7 @@ namespace WpfPractise.ADO.Pages
 
             display2();
         }
+
         public void display2()
         {
             command.Parameters.Clear();
@@ -83,6 +85,22 @@ namespace WpfPractise.ADO.Pages
             }
 
             JoinCol2 = new ObservableCollection<Join>(JoinCol);
+
+            for (int i = 0; i < 100000; i++)
+            {
+                JoinCol.Add(new Join()
+                {
+                    Eno = 1,
+                    EName = "Name" + i,
+                    Esalary = 10,
+                    Role = "dev",
+                    DeptId = 1,
+                    DeptName = "dname" + i
+
+                });
+
+
+            }
 
             dg2.DataContext = null;
 
@@ -216,16 +234,7 @@ namespace WpfPractise.ADO.Pages
 
         private void btn_next_Click(object sender, RoutedEventArgs e)
         {
-            //int no = int.Parse(inp_noofrows.Text);
-
-            int gridh = int.Parse(Math.Abs(dg2.Height).ToString());
-            double headerh = (Math.Abs(dg2.ColumnHeaderHeight));
-
-
-            int no2 = int.Parse(Math.Round(dg2.Height).ToString()) - int.Parse(Math.Round(dg2.ColumnHeaderHeight).ToString());
-
-            int cellh = int.Parse(Math.Round(dg2.RowHeight).ToString());
-            int no = no2 / cellh;
+             
             int from = curr;
             int to = curr + no;
             if (to < JoinCol2.Count)
@@ -318,5 +327,13 @@ namespace WpfPractise.ADO.Pages
             }
             curr = i;
         }
+
+
+        private void rbsc(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+
+            no = (int)inp_noofrows.SelectionBoxItem;
+        }
     }
 }
+

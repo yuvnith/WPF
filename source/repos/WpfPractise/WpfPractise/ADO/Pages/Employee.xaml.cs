@@ -21,15 +21,18 @@ using WpfPractise.ADO.Connected;
 namespace WpfPractise.ADO.Pages
 {
     /// <summary>
-    /// Interaction logic for EmployeeCRUD.xaml
+    /// Interaction logic for Employee.xaml
     /// </summary>
-    public partial class EmployeeCRUD : Page
+    public partial class Employee : Page
     {
+
         OracleConnection connection;
         OracleCommand command;
         public ObservableCollection<Temp> collection2 { get; set; } = new ObservableCollection<Temp>();
-        public EmployeeCRUD()
+        public Employee()
         {
+            InitializeComponent();
+
             InitializeComponent();
 
             string constring = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
@@ -40,12 +43,6 @@ namespace WpfPractise.ADO.Pages
 
             display();
         }
-
-        public EmployeeCRUD(string str)
-        {
-            
-        }
-
         public void btn_add_Click(object sender, RoutedEventArgs e)
         {
             string name = inp_name.Text;
@@ -97,10 +94,9 @@ namespace WpfPractise.ADO.Pages
                     }
                 });
             }
-
             dg.DataContext = null;
             dg.DataContext = collection2;
-          
+
 
 
         }
@@ -162,12 +158,10 @@ namespace WpfPractise.ADO.Pages
             command.ExecuteNonQuery();
             connection.Close();
             display();
-           
+
             inp_no.Text = "";
             inp_name.Text = "";
             inp_salary.Text = "";
         }
-
-        
     }
 }

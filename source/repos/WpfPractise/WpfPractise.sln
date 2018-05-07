@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfPractise", "WpfPractise\WpfPractise.csproj", "{105D3B34-9838-4464-B977-8D01A418275D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForm", "WinForm\WinForm.csproj", "{98895DCA-54B6-4AC2-A0D6-B3737E8A48E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormControl", "WinFormControl\WinFormControl.csproj", "{C87B8F5C-4004-4F23-A2A7-D13A6636423B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{105D3B34-9838-4464-B977-8D01A418275D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{105D3B34-9838-4464-B977-8D01A418275D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{105D3B34-9838-4464-B977-8D01A418275D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98895DCA-54B6-4AC2-A0D6-B3737E8A48E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98895DCA-54B6-4AC2-A0D6-B3737E8A48E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98895DCA-54B6-4AC2-A0D6-B3737E8A48E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98895DCA-54B6-4AC2-A0D6-B3737E8A48E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C87B8F5C-4004-4F23-A2A7-D13A6636423B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C87B8F5C-4004-4F23-A2A7-D13A6636423B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C87B8F5C-4004-4F23-A2A7-D13A6636423B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C87B8F5C-4004-4F23-A2A7-D13A6636423B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

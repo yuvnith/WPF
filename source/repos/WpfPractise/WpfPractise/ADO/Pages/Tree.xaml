@@ -1,19 +1,36 @@
-﻿<Page x:Class="WpfPractise.ADO.Pages.Home"
+﻿<Page x:Class="WpfPractise.ADO.Pages.Tree"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfPractise.ADO.Pages"
+      xmlns:connected="clr-namespace:WpfPractise.ADO.Connected"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="Home">
+      Title="Tree2">
     <Page.Resources>
-        <Style TargetType="TextBlock">
-            <Setter Property="FontSize"  Value="12"></Setter>
-        </Style>
+
+        <HierarchicalDataTemplate DataType="{x:Type connected:Temp}" ItemsSource="{Binding Details}">
+            <TextBlock Text="{Binding EName}"></TextBlock>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate DataType="{x:Type connected:Emp}" >
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{Binding EName}"></TextBlock>
+                <TextBlock Text="{Binding Esalary}"></TextBlock>
+                <TextBlock Text="{Binding Eno}"></TextBlock>
+                <TextBlock Text="{Binding Role}"></TextBlock>
+                <TextBlock Text="{Binding DeptId}"></TextBlock>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+
+
+        <HierarchicalDataTemplate DataType="{x:Type connected:JoinTree}" ItemsSource="{Binding Emp}">
+            <TextBlock Text="{Binding EName}"></TextBlock>
+        </HierarchicalDataTemplate>
     </Page.Resources>
-    <Grid>
-        <Ribbon  SelectedIndex="0" Margin="0,0,0,254" >
+    <Grid Margin="0,0,-289,-256">
+        <Ribbon  SelectedIndex="0" Margin="0,0,0,327" >
             <RibbonTab Header="Home" KeyTip="H" >
                 <RibbonGroup x:Name="ClipboardGroup" Header="Tables">
                     <TextBlock>
@@ -29,9 +46,9 @@
                         <Hyperlink NavigateUri="DeptAndEmployee.xaml">Relation</Hyperlink>
                     </TextBlock>
                 </RibbonGroup>
-                <RibbonGroup  Header="Trees">
+                <RibbonGroup  Header="Tree">
                     <TextBlock>
-                        <Hyperlink NavigateUri="Tree.xaml">Trees</Hyperlink>
+                        <Hyperlink NavigateUri="Trees.xaml">Trees</Hyperlink>
                     </TextBlock>
                 </RibbonGroup>
                 <RibbonGroup  Header="Filters">
@@ -44,6 +61,7 @@
                 </RibbonGroup>
             </RibbonTab>
         </Ribbon>
-
+        <TreeView  x:Name="Tree2" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="360" Margin="14,155,0,0" VerticalAlignment="Top" Width="234"/>
+        <TreeView  x:Name="TreeView" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="360" Margin="300,155,0,0" VerticalAlignment="Top" Width="220"/>
     </Grid>
 </Page>

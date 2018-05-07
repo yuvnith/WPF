@@ -21,15 +21,14 @@ using WpfPractise.ADO.Connected;
 namespace WpfPractise.ADO.Pages
 {
     /// <summary>
-    /// Interaction logic for Departments.xaml
+    /// Interaction logic for Department.xaml
     /// </summary>
-    public partial class Departments : Page
+    public partial class Department : Page
     {
         OracleConnection connection;
         OracleCommand command;
         public ObservableCollection<Temp1> DeptCol { get; set; } = new ObservableCollection<Temp1>();
-
-        public Departments()
+        public Department()
         {
             string constring = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
             connection = new OracleConnection(constring);
@@ -42,7 +41,6 @@ namespace WpfPractise.ADO.Pages
 
             display1();
         }
-
         public void display1()
         {
             command.Parameters.Clear();
@@ -101,18 +99,8 @@ namespace WpfPractise.ADO.Pages
             command.ExecuteNonQuery();
             connection.Close();
             display1();
-     
 
-        }
 
-        private void btn_delete1_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btn_update1_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

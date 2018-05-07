@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BankTransactions">
       <HintPath>..\..\BankTransactions\bin\Debug\BankTransactions.dll</HintPath>
@@ -44,6 +47,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -56,6 +62,7 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -88,26 +95,29 @@
     <Compile Include="ADO\Pages\CustomFilter.xaml.cs">
       <DependentUpon>CustomFilter.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ADO\Pages\Departments.xaml.cs">
-      <DependentUpon>Departments.xaml</DependentUpon>
+    <Compile Include="ADO\Pages\Department.xaml.cs">
+      <DependentUpon>Department.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ADO\Pages\DeptAndEmployees.xaml.cs">
-      <DependentUpon>DeptAndEmployees.xaml</DependentUpon>
+    <Compile Include="ADO\Pages\DeptAndEmployee.xaml.cs">
+      <DependentUpon>DeptAndEmployee.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ADO\Pages\EmployeeCRUD.xaml.cs">
-      <DependentUpon>EmployeeCRUD.xaml</DependentUpon>
+    <Compile Include="ADO\Pages\Employee.xaml.cs">
+      <DependentUpon>Employee.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ADO\Pages\Filter2.xaml.cs">
-      <DependentUpon>Filter2.xaml</DependentUpon>
+    <Compile Include="ADO\Pages\FilterAndPaginations.xaml.cs">
+      <DependentUpon>FilterAndPaginations.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ADO\Pages\FilterAndPagination.xaml.cs">
-      <DependentUpon>FilterAndPagination.xaml</DependentUpon>
+    <Compile Include="ADO\Pages\Filters2.xaml.cs">
+      <DependentUpon>Filters2.xaml</DependentUpon>
     </Compile>
     <Compile Include="ADO\Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ADO\Pages\Trees.xaml.cs">
-      <DependentUpon>Trees.xaml</DependentUpon>
+    <Compile Include="ADO\Pages\Tree.xaml.cs">
+      <DependentUpon>Tree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ADO\Pages\WindowPage.xaml.cs">
+      <DependentUpon>WindowPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlProperty.xaml.cs">
       <DependentUpon>ControlProperty.xaml</DependentUpon>
@@ -136,6 +146,9 @@
       <DependentUpon>MyComboBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyCommand.cs" />
+    <Compile Include="TemplatePractice.xaml.cs">
+      <DependentUpon>TemplatePractice.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Templates.xaml.cs">
       <DependentUpon>Templates.xaml</DependentUpon>
     </Compile>
@@ -188,23 +201,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ADO\Pages\Departments.xaml">
+    <Page Include="ADO\Pages\Department.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ADO\Pages\DeptAndEmployees.xaml">
+    <Page Include="ADO\Pages\DeptAndEmployee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ADO\Pages\EmployeeCRUD.xaml">
+    <Page Include="ADO\Pages\Employee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ADO\Pages\Filter2.xaml">
+    <Page Include="ADO\Pages\FilterAndPaginations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ADO\Pages\FilterAndPagination.xaml">
+    <Page Include="ADO\Pages\Filters2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -212,7 +225,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ADO\Pages\Trees.xaml">
+    <Page Include="ADO\Pages\Tree.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ADO\Pages\WindowPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -257,6 +274,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MyComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplatePractice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -331,6 +352,24 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="ADO\Pages\Images\1.PNG" />
+    <Resource Include="ADO\Pages\Images\2.PNG" />
+    <Resource Include="ADO\Pages\Images\e.PNG" />
+    <Resource Include="ADO\Pages\Images\s.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WinFormControl\WinFormControl.csproj">
+      <Project>{c87b8f5c-4004-4f23-a2a7-d13a6636423b}</Project>
+      <Name>WinFormControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WinForm\WinForm.csproj">
+      <Project>{98895dca-54b6-4ac2-a0d6-b3737e8a48e2}</Project>
+      <Name>WinForm</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
