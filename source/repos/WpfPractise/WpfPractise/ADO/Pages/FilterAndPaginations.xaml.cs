@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfPractise.ADO.Connected;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace WpfPractise.ADO.Pages
 {
@@ -326,13 +327,14 @@ namespace WpfPractise.ADO.Pages
                 JoinCol.Add(JoinCol2[i]);
             }
             curr = i;
+
+            
         }
+  
 
-
-        private void rbsc(object sender, RoutedPropertyChangedEventArgs<object> e)
+        private void CBSC(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-
-            no = (int)inp_noofrows.SelectionBoxItem;
+            MessageBox.Show("Test");            
         }
     }
 }

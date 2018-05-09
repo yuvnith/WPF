@@ -42,6 +42,13 @@
                         <Hyperlink NavigateUri="Filters2.xaml">Filter2</Hyperlink>
                     </TextBlock>
                 </RibbonGroup>
+                <RibbonGroup  Header="Filters">
+                    <TextBlock>
+                        <Hyperlink NavigateUri="WindowPage.xaml">Hosting Wf in Wpf</Hyperlink>
+                    </TextBlock>
+                </RibbonGroup>
+               
+
             </RibbonTab>
         </Ribbon>
 

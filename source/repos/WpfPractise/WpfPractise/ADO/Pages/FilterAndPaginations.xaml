@@ -29,7 +29,7 @@
                 </RibbonGroup>
                 <RibbonGroup  Header="Filters">
                     <TextBlock><Hyperlink NavigateUri="FilterAndPaginations.xaml"><Run Text="Pagination and Filter"/></Hyperlink></TextBlock>
-                    <TextBlock><Hyperlink NavigateUri="Filter2.xaml"><Run Text="Filter2"/></Hyperlink></TextBlock>
+                    <TextBlock><Hyperlink NavigateUri="Filters2.xaml"><Run Text="Filter2"/></Hyperlink></TextBlock>
                 </RibbonGroup>
 
                 <RibbonGroup  Header="Navigation">
@@ -38,7 +38,7 @@
                     <RibbonButton Click="btn_next_Click" LargeImageSource="Images/2.PNG" Label="Next" KeyTip="C" />
                     <RibbonButton Click="btn_last_Click" LargeImageSource="Images/e.PNG" Label="Last" KeyTip="C" />
                     <RibbonComboBox x:Name="inp_noofrows">
-                 
+                        <RibbonGallery></RibbonGallery>
                     </RibbonComboBox>
                     
                 </RibbonGroup>

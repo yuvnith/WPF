@@ -1,0 +1,62 @@
+﻿<Page x:Class="WpfPractise.ADO.Pages.TextWrapping"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfPractise.ADO.Pages"
+      xmlns:wpfPractise="clr-namespace:WpfPractise"
+      mc:Ignorable="d"
+      Title="TextWrapping" Height="431.333" Width="465.333">
+    <Page.Resources>
+       <local:WidthConverter x:Key="Converter" />
+    </Page.Resources>
+
+    <Grid Margin="0,0,10,10">
+        <DataGrid x:Name="dg" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="316" Margin="16,83,0,0" VerticalAlignment="Top" Width="416" AutoGenerateColumns="False" ColumnWidth="*">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="No" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Eno}"  DataContext="{Binding Details}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding EName}" Header="Name"/>
+                <DataGridTemplateColumn x:Name="Sal" Header="Salary" Width="40">
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <Popup IsOpen="True"  >
+                                <TextBox  AcceptsReturn="True" Width="{Binding ElementName=Sal,Path=Width,Converter={StaticResource Converter}}" TextWrapping="Wrap" Text="{Binding Esalary,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  DataContext="{Binding Details}"/>
+                            </Popup>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock TextWrapping="Wrap" Text="{Binding Esalary}"  DataContext="{Binding Details}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Role" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Role}" TextWrapping="Wrap" AcceptsReturn="True" DataContext="{Binding Details}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="DeptId" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding DeptId}" TextWrapping="Wrap" AcceptsReturn="True" DataContext="{Binding Details}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+ 
+        </DataGrid>
+        <Button x:Name="btn_display" Content="DISPLAY" HorizontalAlignment="Left" Margin="156,45,0,0" VerticalAlignment="Top" Width="75" Click="btn_display_Click"/>
+
+    </Grid>
+</Page>
+
+
+

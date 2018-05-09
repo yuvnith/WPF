@@ -113,11 +113,17 @@
     <Compile Include="ADO\Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ADO\Pages\TextWrapping.xaml.cs">
+      <DependentUpon>TextWrapping.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ADO\Pages\Tree.xaml.cs">
       <DependentUpon>Tree.xaml</DependentUpon>
     </Compile>
     <Compile Include="ADO\Pages\WindowPage.xaml.cs">
       <DependentUpon>WindowPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ToolTip.xaml.cs">
+      <DependentUpon>ToolTip.xaml</DependentUpon>
     </Compile>
     <Compile Include="ControlProperty.xaml.cs">
       <DependentUpon>ControlProperty.xaml</DependentUpon>
@@ -225,11 +231,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ADO\Pages\TextWrapping.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ADO\Pages\Tree.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ADO\Pages\WindowPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolTip.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -363,9 +377,9 @@
       <Project>{c87b8f5c-4004-4f23-a2a7-d13a6636423b}</Project>
       <Name>WinFormControl</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WinForm\WinForm.csproj">
-      <Project>{98895dca-54b6-4ac2-a0d6-b3737e8a48e2}</Project>
-      <Name>WinForm</Name>
+    <ProjectReference Include="..\WraperControl\WraperControl.csproj">
+      <Project>{6DC028CA-BD4A-4F61-8BE4-EEB8ADE22F45}</Project>
+      <Name>WraperControl</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

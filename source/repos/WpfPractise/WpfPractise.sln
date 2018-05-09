@@ -5,9 +5,13 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfPractise", "WpfPractise\WpfPractise.csproj", "{105D3B34-9838-4464-B977-8D01A418275D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForm", "WinForm\WinForm.csproj", "{98895DCA-54B6-4AC2-A0D6-B3737E8A48E2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormControl", "WinFormControl\WinFormControl.csproj", "{C87B8F5C-4004-4F23-A2A7-D13A6636423B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reflection", "Reflection\Reflection.csproj", "{F9EA8A7C-3F31-4799-A0E2-5959B4221228}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Indexers", "Indexers\Indexers.csproj", "{ABAB75DE-5ABF-4775-9D87-811D99F1AE25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WraperControl", "WraperControl\WraperControl.csproj", "{6DC028CA-BD4A-4F61-8BE4-EEB8ADE22F45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +23,22 @@ Global
 		{105D3B34-9838-4464-B977-8D01A418275D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{105D3B34-9838-4464-B977-8D01A418275D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{105D3B34-9838-4464-B977-8D01A418275D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{98895DCA-54B6-4AC2-A0D6-B3737E8A48E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{98895DCA-54B6-4AC2-A0D6-B3737E8A48E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{98895DCA-54B6-4AC2-A0D6-B3737E8A48E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{98895DCA-54B6-4AC2-A0D6-B3737E8A48E2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C87B8F5C-4004-4F23-A2A7-D13A6636423B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C87B8F5C-4004-4F23-A2A7-D13A6636423B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C87B8F5C-4004-4F23-A2A7-D13A6636423B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C87B8F5C-4004-4F23-A2A7-D13A6636423B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9EA8A7C-3F31-4799-A0E2-5959B4221228}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9EA8A7C-3F31-4799-A0E2-5959B4221228}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9EA8A7C-3F31-4799-A0E2-5959B4221228}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9EA8A7C-3F31-4799-A0E2-5959B4221228}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABAB75DE-5ABF-4775-9D87-811D99F1AE25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABAB75DE-5ABF-4775-9D87-811D99F1AE25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABAB75DE-5ABF-4775-9D87-811D99F1AE25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABAB75DE-5ABF-4775-9D87-811D99F1AE25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DC028CA-BD4A-4F61-8BE4-EEB8ADE22F45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DC028CA-BD4A-4F61-8BE4-EEB8ADE22F45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DC028CA-BD4A-4F61-8BE4-EEB8ADE22F45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DC028CA-BD4A-4F61-8BE4-EEB8ADE22F45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

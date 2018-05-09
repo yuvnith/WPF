@@ -10,23 +10,28 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using WinFormControl;
-
-namespace WpfPractise.ADO.Pages
+namespace WpfPractise
 {
     /// <summary>
-    /// Interaction logic for WindowPage.xaml
+    /// Interaction logic for ControlExpansion.xaml
     /// </summary>
-    public partial class WindowPage : Page
+    public partial class ControlExpansion : Window
     {
-        public WindowPage()
+         int flag = 0 ,focus = 0;
+
+      
+
+        public ControlExpansion()
         {
             InitializeComponent();
-            UserControl1 uc = new UserControl1();
-            wfh.Child = uc;
+        }
+
+
+        private void Tb_OnPreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Tb.Height += 100;
         }
     }
 }

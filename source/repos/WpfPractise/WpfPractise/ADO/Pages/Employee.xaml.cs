@@ -33,8 +33,7 @@ namespace WpfPractise.ADO.Pages
         {
             InitializeComponent();
 
-            InitializeComponent();
-
+            
             string constring = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
             connection = new OracleConnection(constring);
             command = new OracleCommand();

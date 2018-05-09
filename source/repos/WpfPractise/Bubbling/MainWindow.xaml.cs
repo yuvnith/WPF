@@ -27,12 +27,13 @@ namespace Bubbling
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("button2");
+            MessageBox.Show("Child");
+            e.Handled = true;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("button1");
+            MessageBox.Show("Parent");
         }
     }
 }

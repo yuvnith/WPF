@@ -1,0 +1,16 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfPractise"
+        xmlns:WraperControl="clr-namespace:WraperControl;assembly=WraperControl" x:Class="WpfPractise.ControlExpansion"
+        mc:Ignorable="d"
+        Title="ControlExpansion" Height="300" Width="300" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBox x:Name="Tb" HorizontalAlignment="Left" Height="31"  AcceptsReturn="True" Margin="39,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" ToolTip="{Binding Text, ElementName=Tb}" Width="199"  />
+        <WraperControl:UserControl1 HorizontalAlignment="Left" Margin="117,106,0,0" VerticalAlignment="Top"/>
+
+
+    </Grid>
+</Window>
