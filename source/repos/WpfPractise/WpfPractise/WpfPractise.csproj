@@ -122,6 +122,9 @@
     <Compile Include="ADO\Pages\WindowPage.xaml.cs">
       <DependentUpon>WindowPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Async.xaml.cs">
+      <DependentUpon>Async.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ToolTip.xaml.cs">
       <DependentUpon>ToolTip.xaml</DependentUpon>
     </Compile>
@@ -240,6 +243,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ADO\Pages\WindowPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Async.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
