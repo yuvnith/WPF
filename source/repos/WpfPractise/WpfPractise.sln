@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Indexers", "Indexers\Indexe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WraperControl", "WraperControl\WraperControl.csproj", "{6DC028CA-BD4A-4F61-8BE4-EEB8ADE22F45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework", "..\EntityFramework\EntityFramework.csproj", "{F4A9974D-80F2-4C12-B7B8-CAB33DD542E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grid1Save", "..\Grid1Save\Grid1Save.csproj", "{9DF3B862-8129-4EFC-AE77-9559495E7A56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{6DC028CA-BD4A-4F61-8BE4-EEB8ADE22F45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6DC028CA-BD4A-4F61-8BE4-EEB8ADE22F45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6DC028CA-BD4A-4F61-8BE4-EEB8ADE22F45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4A9974D-80F2-4C12-B7B8-CAB33DD542E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4A9974D-80F2-4C12-B7B8-CAB33DD542E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4A9974D-80F2-4C12-B7B8-CAB33DD542E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4A9974D-80F2-4C12-B7B8-CAB33DD542E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DF3B862-8129-4EFC-AE77-9559495E7A56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DF3B862-8129-4EFC-AE77-9559495E7A56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DF3B862-8129-4EFC-AE77-9559495E7A56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DF3B862-8129-4EFC-AE77-9559495E7A56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,13 @@
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WraperControl\bin\Debug\WraperControl.dll
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WraperControl\bin\Debug\WraperControl.pdb
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WraperControl\obj\Debug\UserControl1.g.cs
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WraperControl\obj\Debug\WraperControl_MarkupCompile.cache
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WraperControl\obj\Debug\WraperControl_MarkupCompile.lref
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WraperControl\obj\Debug\UserControl1.baml
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WraperControl\obj\Debug\WraperControl.g.resources
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WraperControl\obj\Debug\WraperControl.Properties.Resources.resources
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WraperControl\obj\Debug\WraperControl.csproj.GenerateResource.cache
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WraperControl\obj\Debug\WraperControl.csproj.CoreCompileInputs.cache
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WraperControl\obj\Debug\WraperControl.dll
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WraperControl\obj\Debug\WraperControl.pdb
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WraperControl\obj\Debug\WraperControl.csprojAssemblyReference.cache

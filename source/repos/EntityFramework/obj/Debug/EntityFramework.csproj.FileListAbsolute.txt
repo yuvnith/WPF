@@ -1,0 +1,14 @@
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\EntityFramework\bin\Debug\EntityFramework.exe.config
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\EntityFramework\bin\Debug\EntityFramework.exe
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\EntityFramework\bin\Debug\EntityFramework.pdb
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\EntityFramework\bin\Debug\EntityFramework.dll
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\EntityFramework\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\EntityFramework\bin\Debug\Oracle.ManagedDataAccess.dll
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\EntityFramework\bin\Debug\Oracle.ManagedDataAccess.EntityFramework.dll
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\EntityFramework\bin\Debug\EntityFramework.xml
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\EntityFramework\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\EntityFramework\obj\Debug\EntityFramework.csproj.CoreCompileInputs.cache
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\EntityFramework\obj\Debug\EntityFramework.csproj.CopyComplete
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\EntityFramework\obj\Debug\EntityFramework.exe
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\EntityFramework\obj\Debug\EntityFramework.pdb
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\EntityFramework\obj\Debug\EntityFramework.csprojAssemblyReference.cache

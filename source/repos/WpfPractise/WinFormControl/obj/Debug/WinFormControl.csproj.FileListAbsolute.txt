@@ -1,0 +1,8 @@
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WinFormControl\bin\Debug\WinFormControl.dll
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WinFormControl\bin\Debug\WinFormControl.pdb
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WinFormControl\obj\Debug\WinFormControl.UserControl1.resources
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WinFormControl\obj\Debug\WinFormControl.csproj.GenerateResource.cache
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WinFormControl\obj\Debug\WinFormControl.csproj.CoreCompileInputs.cache
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WinFormControl\obj\Debug\WinFormControl.dll
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WinFormControl\obj\Debug\WinFormControl.pdb
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\WinFormControl\obj\Debug\WinFormControl.csprojAssemblyReference.cache

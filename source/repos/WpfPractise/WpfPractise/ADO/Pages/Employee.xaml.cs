@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.OracleClient;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -33,12 +34,15 @@ namespace WpfPractise.ADO.Pages
         {
             InitializeComponent();
 
-            
+
             string constring = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
             connection = new OracleConnection(constring);
             command = new OracleCommand();
             command.Connection = connection;
             command.CommandType = CommandType.Text;
+
+            dg.DataContext = null;
+            dg.DataContext = collection2;
 
             display();
         }
@@ -60,44 +64,55 @@ namespace WpfPractise.ADO.Pages
                 connection.Open();
             command.ExecuteNonQuery();
             connection.Close();
+
+
+
             display();
+
         }
 
-        public void display()
+        public async Task display()
         {
-            command.Parameters.Clear();
-            command.CommandText = "select * from Employees";
-            if (connection.State == ConnectionState.Closed)
-                connection.Open();
-            OracleDataReader dataReader = command.ExecuteReader(CommandBehavior.CloseConnection);
-            DataTable dataTable = new DataTable();
-            dataTable.Load(dataReader);
 
-            //collection.Clear();
-            collection2.Clear();
-            foreach (DataRow dataTableRow in dataTable.Rows)
+            await Task.Run(() =>
             {
-                collection2.Add(new Temp
+                Thread.Sleep(1000);
+                Dispatcher.Invoke(() =>
                 {
-                    EName = dataTableRow.ItemArray[1].ToString(),
-                    Details = new ObservableCollection<Emp>
+
+                    command.Parameters.Clear();
+                    command.CommandText = "select * from Employees";
+                    if (connection.State == ConnectionState.Closed)
+                        connection.Open();
+                    OracleDataReader dataReader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                    DataTable dataTable = new DataTable();
+                    dataTable.Load(dataReader);
+
+                    //collection.Clear();
+                    collection2.Clear();
+                    foreach (DataRow dataTableRow in dataTable.Rows)
                     {
-                        new Emp
+                        
+                        collection2.Add(new Temp
                         {
                             EName = dataTableRow.ItemArray[1].ToString(),
-                            Eno = int.Parse(dataTableRow.ItemArray[0].ToString()),
-                            Esalary = float.Parse(dataTableRow.ItemArray[2].ToString()),
-                            Role = dataTableRow.ItemArray[3].ToString(),
-                            DeptId = int.Parse(dataTableRow.ItemArray[4].ToString())
+                            Details = new ObservableCollection<Emp>
+                        {
+                            new Emp
+                            {
+                                EName = dataTableRow.ItemArray[1].ToString(),
+                                Eno = int.Parse(dataTableRow.ItemArray[0].ToString()),
+                                Esalary = float.Parse(dataTableRow.ItemArray[2].ToString()),
+                                Role = dataTableRow.ItemArray[3].ToString(),
+                                DeptId = int.Parse(dataTableRow.ItemArray[4].ToString())
+                            }
                         }
+                        });
+                       
                     }
                 });
-            }
-            dg.DataContext = null;
-            dg.DataContext = collection2;
 
-
-
+            });
         }
 
         private void btn_display_Click(object sender, RoutedEventArgs e)

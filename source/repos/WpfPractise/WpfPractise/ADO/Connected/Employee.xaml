@@ -193,12 +193,13 @@
         </TreeView>
         <Button x:Name="btn_View2" Content="View" HorizontalAlignment="Left" Margin="983,117,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.907,-0.65" Click="btn_View2_Click"/>
         <CheckBox x:Name="cb" Content="Filter"  HorizontalAlignment="Left" Margin="1117,117,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btn_start" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="765,478,0,0" VerticalAlignment="Top" Width="31" Click="btn_start_Click"/>
-        <Button x:Name="btn_prev" Content="&lt;" HorizontalAlignment="Left" Margin="820,478,0,0" VerticalAlignment="Top" Width="29" Click="btn_prev_Click"/>
-        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="870,475,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.158,0.231" Width="128" HorizontalContentAlignment="Center"/>
-        <Button x:Name="btn_next" Content="&gt;" HorizontalAlignment="Left" Margin="1019,479,0,0" VerticalAlignment="Top" Width="26" Click="btn_next_Click"/>
-        <Button x:Name="btn_last" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="1062,479,0,0" VerticalAlignment="Top" Width="24" Click="btn_last_Click"/>
-        <ComboBox x:Name="inp_noofrows" HorizontalAlignment="Left" Margin="1199,476,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btn_start" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="749,535,0,0" VerticalAlignment="Top" Width="31" Click="btn_start_Click"/>
+        <Button x:Name="btn_prev" Content="&lt;" HorizontalAlignment="Left" Margin="804,535,0,0" VerticalAlignment="Top" Width="29" Click="btn_prev_Click"/>
+        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="841,583,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.158,0.231" Width="128" HorizontalContentAlignment="Center"/>
+        <Button x:Name="btn_next" Content="&gt;" HorizontalAlignment="Left" Margin="1003,536,0,0" VerticalAlignment="Top" Width="26" Click="btn_next_Click"/>
+        <Button x:Name="btn_last" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="1046,536,0,0" VerticalAlignment="Top" Width="24" Click="btn_last_Click"/>
+        <ComboBox x:Name="inp_noofrows" HorizontalAlignment="Left" Margin="1183,533,0,0" VerticalAlignment="Top" Width="120"/>
+        <ProgressBar Name="ProgressBar" HorizontalAlignment="Left" Height="12" VerticalAlignment="Top" Width="610" Margin="720,479,0,0"/>
 
     </Grid>
 

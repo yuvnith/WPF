@@ -31,12 +31,9 @@ namespace WpfPractise
 
         public async Task gd1()
         {
-           
-
-
             await Task.Run(() =>
             {
-                for (var i = 0; i < 10000000; i++)
+                for (var i = 0; i < 100; i++)
                 {
                     col.Add(new Aa()
                     {

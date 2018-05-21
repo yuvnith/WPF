@@ -1,4 +1,4 @@
-﻿    using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,7 +33,7 @@ namespace WpfPractise.ADO.Connected
 
         //data grid text box value change 
         int flag = 0;
-
+        BackgroundWorker bg = new BackgroundWorker();
         //  public ObservableCollection<Emp> collection { get; set; } = new ObservableCollection<Emp>();
         public ObservableCollection<Temp> collection2 { get; set; } = new ObservableCollection<Temp>();
 
@@ -55,10 +55,8 @@ namespace WpfPractise.ADO.Connected
 
         public Employee()
         {
-            InitializeComponent();
-
-
-
+            InitializeComponent(); 
+            Loaded += Employee_Loaded;
             for (int i = 1; i <= 10; i++)
                 inp_noofrows.Items.Add(i);
 
@@ -67,6 +65,27 @@ namespace WpfPractise.ADO.Connected
             command = new OracleCommand();
             command.Connection = connection;
             command.CommandType = CommandType.Text;
+
+
+
+            dg.DataContext = null;
+            dg.DataContext = collection2;
+            Tree.DataContext = null;
+            Tree.DataContext = collection2;
+
+
+            dg1.DataContext = null;
+            dg1.DataContext = DeptCol;
+
+
+
+            dg2.DataContext = null;
+
+            dg2.DataContext = JoinCol;
+
+
+
+
             display();
 
             display1();
@@ -74,7 +93,12 @@ namespace WpfPractise.ADO.Connected
             display2();
 
             Tree3();
-            
+
+
+        }
+
+        private async void Employee_Loaded(object sender, RoutedEventArgs e)
+        {
 
         }
 
@@ -105,42 +129,46 @@ namespace WpfPractise.ADO.Connected
 
         }
 
-        public void display()
+        public async Task display()
         {
-            command.Parameters.Clear();
-            command.CommandText = "select * from Employees";
-            if (connection.State == ConnectionState.Closed)
-                connection.Open();
-            OracleDataReader dataReader = command.ExecuteReader(CommandBehavior.CloseConnection);
-            DataTable dataTable = new DataTable();
-            dataTable.Load(dataReader);
-
-            //collection.Clear();
-            collection2.Clear();
-            foreach (DataRow dataTableRow in dataTable.Rows)
+            await Task.Run(() =>
             {
-                collection2.Add(new Temp
+                Dispatcher.Invoke(() =>
                 {
-                    EName = dataTableRow.ItemArray[1].ToString(),
-                    Details = new ObservableCollection<Emp>
+                    command.Parameters.Clear();
+                    command.CommandText = "select * from Employees";
+                    if (connection.State == ConnectionState.Closed)
+                        connection.Open();
+                    OracleDataReader dataReader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                    DataTable dataTable = new DataTable();
+                    dataTable.Load(dataReader);
+
+                    //collection.Clear();
+                    collection2.Clear();
+                    foreach (DataRow dataTableRow in dataTable.Rows)
                     {
-                        new Emp
+                        collection2.Add(new Temp
                         {
                             EName = dataTableRow.ItemArray[1].ToString(),
-                            Eno = int.Parse(dataTableRow.ItemArray[0].ToString()),
-                            Esalary = float.Parse(dataTableRow.ItemArray[2].ToString()),
-                            Role = dataTableRow.ItemArray[3].ToString(),
-                            DeptId = int.Parse(dataTableRow.ItemArray[4].ToString())
-                        }
+                            Details = new ObservableCollection<Emp>
+                            {
+                                new Emp
+                                {
+                                    EName = dataTableRow.ItemArray[1].ToString(),
+                                    Eno = int.Parse(dataTableRow.ItemArray[0].ToString()),
+                                    Esalary = float.Parse(dataTableRow.ItemArray[2].ToString()),
+                                    Role = dataTableRow.ItemArray[3].ToString(),
+                                    DeptId = int.Parse(dataTableRow.ItemArray[4].ToString())
+                                }
+                            }
+                        });
                     }
+
                 });
-            }
+            });
 
-            dg.DataContext = null;
-            dg.DataContext = collection2;
-            Tree.DataContext = null;
-            Tree.DataContext = collection2;
-
+            //dg.DataContext = null;
+            //dg.DataContext = collection2;//Tree.DataContext = null;//Tree.DataContext = collection2;
 
         }
 
@@ -230,47 +258,55 @@ namespace WpfPractise.ADO.Connected
 
 
 
-        public void display1()
+        public async Task display1()
         {
-            command.Parameters.Clear();
-            command.CommandText = "select * from Departments";
-            if (connection.State == ConnectionState.Closed)
-                connection.Open();
-            OracleDataReader dataReader = command.ExecuteReader(CommandBehavior.CloseConnection);
-            DataTable dataTable = new DataTable();
-            dataTable.Load(dataReader);
-
-            DeptCol.Clear();
-            foreach (DataRow dataTableRow in dataTable.Rows)
+            await Task.Run(() =>
             {
-                //Emp e = new Emp
-                //{
-                //    EName = dataTableRow.ItemArray[1].ToString(),
-                //    Eno = int.Parse(dataTableRow.ItemArray[0].ToString()),
-                //    Esalary = float.Parse(dataTableRow.ItemArray[2].ToString())
-                //};
-
-                //collection.Add(e);
-
-                DeptCol.Add(new Temp1()
+                Dispatcher.Invoke(() =>
                 {
-                    DeptName = dataTableRow.ItemArray[1].ToString(),
-                    Details = new ObservableCollection<Dept>
+                    command.Parameters.Clear();
+                    command.CommandText = "select * from Departments";
+                    if (connection.State == ConnectionState.Closed)
+                        connection.Open();
+                    OracleDataReader dataReader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                    DataTable dataTable = new DataTable();
+                    dataTable.Load(dataReader);
+
+                    DeptCol.Clear();
+                    foreach (DataRow dataTableRow in dataTable.Rows)
                     {
-                        new Dept()
+                        //Emp e = new Emp
+                        //{
+                        //    EName = dataTableRow.ItemArray[1].ToString(),
+                        //    Eno = int.Parse(dataTableRow.ItemArray[0].ToString()),
+                        //    Esalary = float.Parse(dataTableRow.ItemArray[2].ToString())
+                        //};
+
+                        //collection.Add(e);
+
+                        DeptCol.Add(new Temp1()
                         {
                             DeptName = dataTableRow.ItemArray[1].ToString(),
-                            DeptId = int.Parse(dataTableRow.ItemArray[0].ToString())
-                        }
+                            Details = new ObservableCollection<Dept>
+                            {
+                                new Dept()
+                                {
+                                    DeptName = dataTableRow.ItemArray[1].ToString(),
+                                    DeptId = int.Parse(dataTableRow.ItemArray[0].ToString())
+                                }
+                            }
+                        });
                     }
                 });
-            }
 
-            dg1.DataContext = null;
-            dg1.DataContext = DeptCol;
+            });
+
+
+            //dg1.DataContext = null;
+            //dg1.DataContext = DeptCol;
         }
 
-        public void display2()
+        public async Task display2()
         {
             command.Parameters.Clear();
             command.CommandText = "SELECT Employees.EMPNO, Employees.ENAME, Employees.SALARY,Employees.ROLE, Employees.DEPTID,Departments.DEPTNAME FROM Employees INNER JOIN Departments ON Employees.DEPTID = Departments.DEPTID";
@@ -282,66 +318,145 @@ namespace WpfPractise.ADO.Connected
 
             JoinCol.Clear();
             JoinCol.Clear();
-            foreach (DataRow dataTableRow in dataTable.Rows)
+
+
+
+            await Task.Run(() =>
             {
-                //Emp e = new Emp
-                //{
-                //    EName = dataTableRow.ItemArray[1].ToString(),
-                //    Eno = int.Parse(dataTableRow.ItemArray[0].ToString()),
-                //    Esalary = float.Parse(dataTableRow.ItemArray[2].ToString())
-                //};
-
-                //collection.Add(e);
-
-                JoinCol.Add(new Join()
+                var JoinCol2 = new List<Join>();
+                foreach (DataRow dataTableRow in dataTable.Rows)
                 {
-                    Eno = int.Parse(dataTableRow.ItemArray[0].ToString()),
-                    EName = dataTableRow.ItemArray[1].ToString(),
-                    Esalary = int.Parse(dataTableRow.ItemArray[2].ToString()),
-                    Role = dataTableRow.ItemArray[3].ToString(),
-                    DeptId = int.Parse(dataTableRow.ItemArray[4].ToString()),
-                    DeptName = dataTableRow.ItemArray[5].ToString()
+                    JoinCol.Add(new Join()
+                    {
+                        Eno = int.Parse(dataTableRow.ItemArray[0].ToString()),
+                        EName = dataTableRow.ItemArray[1].ToString(),
+                        Esalary = int.Parse(dataTableRow.ItemArray[2].ToString()),
+                        Role = dataTableRow.ItemArray[3].ToString(),
+                        DeptId = int.Parse(dataTableRow.ItemArray[4].ToString()),
+                        DeptName = dataTableRow.ItemArray[5].ToString()
 
+                    });
+                }
+
+                MessageBox.Show("Getting Records !!");
+                for (int i = 0; i < 10000000; i++)
+                {
+                    JoinCol2.Add(new Join()
+                    {
+                        Eno = 1,
+                        EName = "Name" + i,
+                        Esalary = 10,
+                        Role = "dev",
+                        DeptId = 1,
+                        DeptName = "dname" + i
+
+                    });
+
+                    
+                }
+                Dispatcher.Invoke(() =>
+                {
+
+                    MessageBox.Show("Done");
+                    JoinCol = new ObservableCollection<Join>(JoinCol2);
+
+                    dg2.DataContext = null;
+                    dg2.DataContext = JoinCol2;
+                    
                 });
-            }
+            });
 
 
-
-
-
-            //for (int i = 0; i < 100; i++)
-            //{
-            //    JoinCol.Add(new Join()
-            //    {
-            //        EName = i.ToString(),
-            //        Role = "developer",
-            //        Eno = i,
-            //        Esalary = 10,
-            //        DeptName = "ERM",
-            //        DeptId = 1
-            //    });
-            //}
-
-            JoinCol2 = new ObservableCollection<Join>(JoinCol);
-
-            dg2.DataContext = null;
-
-            dg2.DataContext = JoinCol;
-
-
-
-            //if (dg2.DataContext == null)
-            //{
-            //    //dg2.Items.Clear();
-            //    dg2.DataContext = JoinCol;
-            //}
-            Tree3();
 
             flag = 0;
 
 
+
+
+
+
+            //bg.WorkerReportsProgress = true;
+            //bg.WorkerSupportsCancellation = true;
+
+            //bg.DoWork += Bg_DoWork;
+            //bg.RunWorkerCompleted += Bg_RunWorkerCompleted;
+            //bg.ProgressChanged += Bg_ProgressChanged;
+
+            //bg.RunWorkerAsync();
         }
 
+        private void Bg_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            ProgressBar.Value = e.ProgressPercentage;
+            label.Content = "Processing......" + ProgressBar.Value.ToString() + "%";
+        }
+
+        private void Bg_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+                label.Content = "Task Cancelled.";
+            }
+
+            // Check to see if an error occurred in the background process.
+
+            else if (e.Error != null)
+            {
+                label.Content = "Error while performing background operation.";
+            }
+            else
+            {
+                // Everything completed normally.
+                label.Content = "Task Completed...";
+            }
+        }
+
+        private void Bg_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //command.Parameters.Clear();
+            //command.CommandText = "SELECT Employees.EMPNO, Employees.ENAME, Employees.SALARY,Employees.ROLE, Employees.DEPTID,Departments.DEPTNAME FROM Employees INNER JOIN Departments ON Employees.DEPTID = Departments.DEPTID";
+            //if (connection.State == ConnectionState.Closed)
+            //    connection.Open();
+            //OracleDataReader dataReader = command.ExecuteReader(CommandBehavior.CloseConnection);
+            //DataTable dataTable = new DataTable();
+            //dataTable.Load(dataReader);
+
+            //foreach (DataRow dataTableRow in dataTable.Rows)
+            //{
+            //    JoinCol.Add(new Join()
+            //    {
+            //        Eno = int.Parse(dataTableRow.ItemArray[0].ToString()),
+            //        EName = dataTableRow.ItemArray[1].ToString(),
+            //        Esalary = int.Parse(dataTableRow.ItemArray[2].ToString()),
+            //        Role = dataTableRow.ItemArray[3].ToString(),
+            //        DeptId = int.Parse(dataTableRow.ItemArray[4].ToString()),
+            //        DeptName = dataTableRow.ItemArray[5].ToString()
+
+            //    });
+            //}
+
+            Dispatcher.Invoke(() =>
+            {
+                for (var i = 0; i < 100000; i++)
+                {
+                    JoinCol.Add(new Join()
+                    {
+                        Eno = i,
+                        EName = "i",
+                        Esalary = 2,
+                        Role = "ujuiad",
+                        DeptId = 3,
+                        DeptName = "ads"
+
+                    });
+                }
+
+            });
+
+
+            bg.ReportProgress(100);
+
+        }
 
         private void MenuItem_OnClick(object sender, RoutedEventArgs e)
         {
@@ -974,10 +1089,10 @@ namespace WpfPractise.ADO.Connected
 
         }
 
-      
 
 
-       
+
+
 
 
         private void btn_next_Click(object sender, RoutedEventArgs e)
@@ -988,7 +1103,7 @@ namespace WpfPractise.ADO.Connected
             double headerh = (Math.Abs(dg2.ColumnHeaderHeight));
 
 
-            int no2 = int.Parse(Math.Round(dg2.Height).ToString())-int.Parse(Math.Round(dg2.ColumnHeaderHeight).ToString());
+            int no2 = int.Parse(Math.Round(dg2.Height).ToString()) - int.Parse(Math.Round(dg2.ColumnHeaderHeight).ToString());
 
             int cellh = int.Parse(Math.Round(dg2.RowHeight).ToString());
             int no = no2 / cellh;
@@ -1260,7 +1375,7 @@ namespace WpfPractise.ADO.Connected
             {
                 for (int i = 0; i < JoinCol2.Count; i++)
                 {
-                    if(!JoinCol2[i].EName.StartsWith(ena))
+                    if (!JoinCol2[i].EName.StartsWith(ena))
                     {
                         if (JoinCol.Contains(JoinCol2[i]))
                             JoinCol.Remove(JoinCol2[i]);
@@ -1302,8 +1417,8 @@ namespace WpfPractise.ADO.Connected
                 for (int i = 0; i < JoinCol2.Count; i++)
                 {
                     if (JoinCol2[i].Eno.ToString().ToLower() != eno.ToLower())
-                        if(JoinCol.Contains(JoinCol2[i]))
-                        JoinCol.Remove(JoinCol2[i]);
+                        if (JoinCol.Contains(JoinCol2[i]))
+                            JoinCol.Remove(JoinCol2[i]);
                 }
                 flag2 = 1;
             }

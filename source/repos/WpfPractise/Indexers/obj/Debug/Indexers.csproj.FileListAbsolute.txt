@@ -1,0 +1,7 @@
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\Indexers\bin\Debug\Indexers.exe.config
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\Indexers\bin\Debug\Indexers.exe
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\Indexers\bin\Debug\Indexers.pdb
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\Indexers\obj\Debug\Indexers.csproj.CoreCompileInputs.cache
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\Indexers\obj\Debug\Indexers.exe
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\Indexers\obj\Debug\Indexers.pdb
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\Indexers\obj\Debug\Indexers.csprojAssemblyReference.cache

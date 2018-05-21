@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.OracleClient;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -37,48 +38,58 @@ namespace WpfPractise.ADO.Pages
             command.CommandType = CommandType.Text;
 
             InitializeComponent();
-
+            dg1.DataContext = null;
+            dg1.DataContext = DeptCol;
 
             display1();
         }
-        public void display1()
+        public async Task display1()
         {
-            command.Parameters.Clear();
-            command.CommandText = "select * from Departments";
-            if (connection.State == ConnectionState.Closed)
-                connection.Open();
-            OracleDataReader dataReader = command.ExecuteReader(CommandBehavior.CloseConnection);
-            DataTable dataTable = new DataTable();
-            dataTable.Load(dataReader);
-
-            DeptCol.Clear();
-            foreach (DataRow dataTableRow in dataTable.Rows)
+            await Task.Run(() =>
             {
-                //Emp e = new Emp
-                //{
-                //    EName = dataTableRow.ItemArray[1].ToString(),
-                //    Eno = int.Parse(dataTableRow.ItemArray[0].ToString()),
-                //    Esalary = float.Parse(dataTableRow.ItemArray[2].ToString())
-                //};
-
-                //collection.Add(e);
-
-                DeptCol.Add(new Temp1()
+                Thread.Sleep(10000);
+                Dispatcher.Invoke(() =>
                 {
-                    DeptName = dataTableRow.ItemArray[1].ToString(),
-                    Details = new ObservableCollection<Dept>
+                    command.Parameters.Clear();
+                    command.CommandText = "select * from Departments";
+                    if (connection.State == ConnectionState.Closed)
+                        connection.Open();
+                    OracleDataReader dataReader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                    DataTable dataTable = new DataTable();
+                    dataTable.Load(dataReader);
+
+                    DeptCol.Clear();
+                    foreach (DataRow dataTableRow in dataTable.Rows)
                     {
-                        new Dept()
+                        //Emp e = new Emp
+                        //{
+                        //    EName = dataTableRow.ItemArray[1].ToString(),
+                        //    Eno = int.Parse(dataTableRow.ItemArray[0].ToString()),
+                        //    Esalary = float.Parse(dataTableRow.ItemArray[2].ToString())
+                        //};
+
+                        //collection.Add(e);
+
+                        DeptCol.Add(new Temp1()
                         {
                             DeptName = dataTableRow.ItemArray[1].ToString(),
-                            DeptId = int.Parse(dataTableRow.ItemArray[0].ToString())
-                        }
+                            Details = new ObservableCollection<Dept>
+                            {
+                                new Dept()
+                                {
+                                    DeptName = dataTableRow.ItemArray[1].ToString(),
+                                    DeptId = int.Parse(dataTableRow.ItemArray[0].ToString())
+                                }
+                            }
+                        });
                     }
                 });
-            }
 
-            dg1.DataContext = null;
-            dg1.DataContext = DeptCol;
+
+            });
+           
+
+           
         }
         private void btn_display1_Click(object sender, RoutedEventArgs e)
         {

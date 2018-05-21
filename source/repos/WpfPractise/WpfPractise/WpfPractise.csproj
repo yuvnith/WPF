@@ -41,9 +41,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BankTransactions">
-      <HintPath>..\..\BankTransactions\bin\Debug\BankTransactions.dll</HintPath>
+      <HintPath>..\..\..\..\..\BankTransactions\bin\Debug\BankTransactions.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\..\app\client\vamshikrishna.pabba\product\12.1.0\client_1\ODP.NET\managed\common\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess.EntityFramework">
+      <HintPath>..\..\..\..\..\..\..\..\..\app\client\vamshikrishna.pabba\product\12.1.0\client_1\ODP.NET\managed\common\EF6\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.OracleClient" />
@@ -101,6 +115,9 @@
     <Compile Include="ADO\Pages\DeptAndEmployee.xaml.cs">
       <DependentUpon>DeptAndEmployee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ADO\Pages\EF.xaml.cs">
+      <DependentUpon>EF.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ADO\Pages\Employee.xaml.cs">
       <DependentUpon>Employee.xaml</DependentUpon>
     </Compile>
@@ -112,6 +129,9 @@
     </Compile>
     <Compile Include="ADO\Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ADO\Pages\Tabs.xaml.cs">
+      <DependentUpon>Tabs.xaml</DependentUpon>
     </Compile>
     <Compile Include="ADO\Pages\TextWrapping.xaml.cs">
       <DependentUpon>TextWrapping.xaml</DependentUpon>
@@ -218,6 +238,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ADO\Pages\EF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ADO\Pages\Employee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -231,6 +255,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ADO\Pages\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ADO\Pages\Tabs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -365,6 +393,7 @@
     <None Include="ADO\Data Set\EmployeeDataSet.xss">
       <DependentUpon>EmployeeDataSet.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

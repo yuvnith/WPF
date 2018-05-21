@@ -1,0 +1,7 @@
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\Reflection\bin\Debug\Reflection.exe.config
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\Reflection\bin\Debug\Reflection.exe
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\Reflection\bin\Debug\Reflection.pdb
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\Reflection\obj\Debug\Reflection.csproj.CoreCompileInputs.cache
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\Reflection\obj\Debug\Reflection.exe
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\Reflection\obj\Debug\Reflection.pdb
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\Reflection\obj\Debug\Reflection.csprojAssemblyReference.cache

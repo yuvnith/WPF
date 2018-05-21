@@ -46,6 +46,10 @@
                     <TextBlock>
                         <Hyperlink NavigateUri="WindowPage.xaml">Hosting Wf in Wpf</Hyperlink>
                     </TextBlock>
+
+                    <TextBlock>
+                        <Hyperlink NavigateUri="Tabs.xaml">Hosting Wf in Wpf</Hyperlink>
+                    </TextBlock>
                 </RibbonGroup>
                
 
