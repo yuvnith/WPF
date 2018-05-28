@@ -1,0 +1,15 @@
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\CustomePopUp\bin\Debug\CustomePopUp.exe.config
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\CustomePopUp\bin\Debug\CustomePopUp.exe
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\CustomePopUp\bin\Debug\CustomePopUp.pdb
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\CustomePopUp\obj\Debug\CustomePopUp.csprojAssemblyReference.cache
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\CustomePopUp\obj\Debug\MainWindow.g.cs
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\CustomePopUp\obj\Debug\App.g.cs
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\CustomePopUp\obj\Debug\CustomePopUp_MarkupCompile.cache
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\CustomePopUp\obj\Debug\CustomePopUp_MarkupCompile.lref
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\CustomePopUp\obj\Debug\MainWindow.baml
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\CustomePopUp\obj\Debug\CustomePopUp.g.resources
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\CustomePopUp\obj\Debug\CustomePopUp.Properties.Resources.resources
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\CustomePopUp\obj\Debug\CustomePopUp.csproj.GenerateResource.cache
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\CustomePopUp\obj\Debug\CustomePopUp.csproj.CoreCompileInputs.cache
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\CustomePopUp\obj\Debug\CustomePopUp.exe
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\CustomePopUp\obj\Debug\CustomePopUp.pdb

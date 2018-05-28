@@ -1,0 +1,52 @@
+﻿<Window x:Class="CustomePopUp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CustomePopUp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Grid>
+
+        <TextBox x:Name="TextBox" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Text }" Margin="338,74,312,316">
+            <TextBox.Resources>
+                <Style TargetType="ToolTip">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ToolTip">
+                                <Grid>
+                                    <Path Data="M31.25,0.5 L40.200275,22.999998 135.5,22.999998 135.5,80 0.5,80 0.5,22.999998 20.5,22.999998 z" Fill="#FFF4F4F5" HorizontalAlignment="Left"  Height="Auto" Width="Auto" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" />
+
+                                    <TextBlock Text="{TemplateBinding Content}" 
+                                               Margin="{TemplateBinding Padding}" 
+                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+
+                                </Grid>
+
+
+                                <!--<Grid>
+                                        <Path Data="M27.499998,2.5 L218,2.5 C231.80711,2.5000005 243,13.692882 243,27.500002 L243,114.5 C243,128.30711 231.80711,139.5 218,139.5 L176.86046,139.5 176.77534,140.60143 C173.04614,179.27731 126.53165,183.52524 126.53165,183.52524 143.526,165.98947 145.27682,147.30386 145.22961,139.96802 L145.222,139.5 27.499998,139.5 C13.692882,139.5 2.5,128.30711 2.5,114.5 L2.5,27.500002 C2.5,13.692882 13.692882,2.5000005 27.499998,2.5 z" 
+                                              Fill="#FF5E9E5B"
+                                              Stretch="Fill" 
+                                              Stroke="Black" 
+                                              StrokeThickness="5"
+                                               />
+                                        <TextBlock Text="{TemplateBinding Content}" 
+                                                   Margin="{TemplateBinding Padding}" 
+                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                                    </Grid>-->
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+      
+
+
+
+    </Grid>
+</Window>

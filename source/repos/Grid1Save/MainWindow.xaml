@@ -9,8 +9,8 @@
     <Grid>
         <Button Margin="623,338,67,44" Name="btn_save" Click="btn_save_Click" Content="Save"></Button>
         <Button Name="btn_Add" Content="Add" Margin="509,338,185,44"></Button>
-        <DataGrid x:Name="dg"  ItemsSource="{Binding Path=collection2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"   HorizontalAlignment="Left" Height="291" Margin="38,18,0,0" VerticalAlignment="Top" Width="705" AutoGenerateColumns="True" ColumnWidth="*">            
-            <!--<DataGrid.Columns>
+        <DataGrid x:Name="dg"  ItemsSource="{Binding Path=collection2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"   HorizontalAlignment="Left" Height="291" Margin="38,18,0,0" VerticalAlignment="Top" Width="705" AutoGenerateColumns="False" ColumnWidth="*">            
+            <DataGrid.Columns>
                 <DataGridTemplateColumn Header="No" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -18,7 +18,13 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Binding="{Binding EName}" Header="Name"/>
+                <DataGridTemplateColumn Header="EName" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding EName}" DataContext="{Binding}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTemplateColumn Header="Salary" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -40,7 +46,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-            </DataGrid.Columns>-->
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </Window>

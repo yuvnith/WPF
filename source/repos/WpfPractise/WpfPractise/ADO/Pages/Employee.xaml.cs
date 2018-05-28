@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data;
 using System.Data.OracleClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -30,6 +31,14 @@ namespace WpfPractise.ADO.Pages
         OracleConnection connection;
         OracleCommand command;
         public ObservableCollection<Temp> collection2 { get; set; } = new ObservableCollection<Temp>();
+
+
+
+        public string Name { get; set; }
+        public int Salary { get; set; }
+
+
+
         public Employee()
         {
             InitializeComponent();
@@ -45,6 +54,9 @@ namespace WpfPractise.ADO.Pages
             dg.DataContext = collection2;
 
             display();
+
+            inp_name.DataContext = this;
+            inp_salary.DataContext = this;
         }
         public void btn_add_Click(object sender, RoutedEventArgs e)
         {
@@ -176,6 +188,40 @@ namespace WpfPractise.ADO.Pages
             inp_no.Text = "";
             inp_name.Text = "";
             inp_salary.Text = "";
+        }
+    }
+
+    public class NameValidator : ValidationRule
+    {
+        public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+        {
+            if((string) value == "")
+                return new ValidationResult(false, "value cannot be empty.");
+            else
+            {
+                if (value.ToString().Length > 10)
+                    return new ValidationResult
+                        (false, "Name cannot be more than 10 characters long.");
+            }
+            return ValidationResult.ValidResult;
+        }
+    }
+
+    public class SalaryValidator : ValidationRule
+    {
+        public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+        {
+            if ((string)value == "")
+                return new ValidationResult(false, "value cannot be empty.");
+            else
+            {
+                int a;
+                var res = int.TryParse(value.ToString(), out a);
+                if (!res)
+                    return new ValidationResult
+                        (false, "enter valid salary");
+            }
+            return ValidationResult.ValidResult;
         }
     }
 }

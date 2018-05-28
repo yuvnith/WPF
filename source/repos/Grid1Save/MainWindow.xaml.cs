@@ -52,8 +52,6 @@ namespace Grid1Save
         }
         public void display()
         {
-
-
             command.Parameters.Clear();
             command.CommandText = "select * from Employees";
             if (connection.State == ConnectionState.Closed)
