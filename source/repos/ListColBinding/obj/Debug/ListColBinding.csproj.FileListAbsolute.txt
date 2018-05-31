@@ -1,0 +1,17 @@
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\ListColBinding\obj\Debug\ListColBinding.csprojAssemblyReference.cache
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\ListColBinding\obj\Debug\MainWindow.g.cs
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\ListColBinding\obj\Debug\App.g.cs
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\ListColBinding\obj\Debug\ListColBinding_MarkupCompile.cache
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\ListColBinding\obj\Debug\ListColBinding_MarkupCompile.lref
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\ListColBinding\bin\Debug\ListColBinding.exe.config
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\ListColBinding\bin\Debug\ListColBinding.exe
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\ListColBinding\bin\Debug\ListColBinding.pdb
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\ListColBinding\obj\Debug\MainWindow.baml
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\ListColBinding\obj\Debug\ListColBinding.g.resources
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\ListColBinding\obj\Debug\ListColBinding.Properties.Resources.resources
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\ListColBinding\obj\Debug\ListColBinding.csproj.GenerateResource.cache
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\ListColBinding\obj\Debug\ListColBinding.csproj.CoreCompileInputs.cache
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\ListColBinding\obj\Debug\ListColBinding.exe
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\ListColBinding\obj\Debug\ListColBinding.pdb
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\ListColBinding\obj\Debug\InputDialogue.g.cs
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\ListColBinding\obj\Debug\InputDialogue.baml
