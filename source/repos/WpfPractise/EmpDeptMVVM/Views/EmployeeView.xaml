@@ -6,16 +6,14 @@
         xmlns:local="clr-namespace:EmpDeptMVVM.Views"
         mc:Ignorable="d"
         Title="Employee" Height="541.47" Width="374.501" WindowStartupLocation="CenterScreen">
-    <Window.DataContext>
-       
-    </Window.DataContext>
+   
     <Grid>
         <Label Content="Employee No" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label Content="Name" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,31,0,0"/>
         <Label Content="Salary" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,62,0,0"/>
-        <TextBox x:Name="inp_no" HorizontalAlignment="Left" Height="23" Margin="86,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="inp_name" HorizontalAlignment="Left" Height="23" Margin="86,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="inp_salary" HorizontalAlignment="Left" Height="23" Margin="86,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="inp_no" Text="{Binding Path=EMPNO}" HorizontalAlignment="Left" Height="23" Margin="86,4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="inp_name" Text="{Binding Path=ENAME}" HorizontalAlignment="Left" Height="23" Margin="86,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="inp_salary" Text="{Binding Path=SALARY}" HorizontalAlignment="Left" Height="23" Margin="86,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btn_add" Content="ADD" HorizontalAlignment="Left" Margin="10,185,0,0" VerticalAlignment="Top" Width="75" Click="btn_add_Click" />
         <Button x:Name="btn_update" Content="UPDATE" HorizontalAlignment="Left" Margin="192,185,0,0" VerticalAlignment="Top" Width="75" />
         <Button Content="DELETE" HorizontalAlignment="Left" Margin="100,185,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" />
@@ -23,9 +21,9 @@
         <DataGrid x:Name="dg" ItemsSource="{Binding Path=Employees}" HorizontalAlignment="Left" Height="237" Margin="10,226,0,-44" VerticalAlignment="Top" Width="337" AutoGenerateColumns="True" ColumnWidth="*"/>
         <Button x:Name="BtnSearch" Content="SEARCH" HorizontalAlignment="Left" Margin="229,6,0,0" VerticalAlignment="Top" Width="75"/>
         <Label Content="Role" HorizontalAlignment="Left" Margin="48,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.778,0.051"/>
-        <TextBox x:Name="inp_role" HorizontalAlignment="Left" Height="23" Margin="86,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="inp_role" Text="{Binding Path=ROLE}" HorizontalAlignment="Left" Height="23" Margin="86,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="DeptId" HorizontalAlignment="Left" Margin="35,132,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="inp_deptid" HorizontalAlignment="Left" Height="23" Margin="86,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="inp_deptid" Text="{Binding Path=DEPTID}" HorizontalAlignment="Left" Height="23" Margin="86,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

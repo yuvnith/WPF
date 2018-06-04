@@ -1,0 +1,7 @@
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\DependencyInjection\bin\Debug\DependencyInjection.exe.config
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\DependencyInjection\bin\Debug\DependencyInjection.exe
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\DependencyInjection\bin\Debug\DependencyInjection.pdb
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\DependencyInjection\obj\Debug\DependencyInjection.csprojAssemblyReference.cache
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\DependencyInjection\obj\Debug\DependencyInjection.csproj.CoreCompileInputs.cache
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\DependencyInjection\obj\Debug\DependencyInjection.exe
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\DependencyInjection\obj\Debug\DependencyInjection.pdb

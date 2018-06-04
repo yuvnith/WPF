@@ -24,24 +24,33 @@ namespace EmpDeptMVVM.Views
     public partial class EmployeeDataView : Window
     {
         EmployeeDataViewModel edvm = new EmployeeDataViewModel();
+
+        EmployeeViewModel evm = new EmployeeViewModel();
         public EmployeeDataView()
         {
             InitializeComponent();
             edvm.GenerateData();
             dg.DataContext = edvm;
+
+            inp_deptid.DataContext = evm;
+            inp_name.DataContext = evm;
+            inp_no.DataContext = evm;
+            inp_role.DataContext = evm;
+            inp_salary.DataContext = evm;
+
         }
 
         private void btn_add_Click(object sender, RoutedEventArgs e)
         {
-            EmployeeViewModel emp = new EmployeeViewModel()
-            {
-                DEPTID = int.Parse(inp_deptid.Text),
-                ENAME = inp_name.Text,
-                ROLE = inp_role.Text,
-                SALARY = int.Parse(inp_salary.Text),
-                EMPNO = int.Parse(inp_no.Text)
-            };
-            edvm.AddData(emp);
+            //EmployeeViewModel emp = new EmployeeViewModel()
+            //{
+            //    DEPTID = int.Parse(inp_deptid.Text),
+            //    ENAME = inp_name.Text,
+            //    ROLE = inp_role.Text,
+            //    SALARY = int.Parse(inp_salary.Text),
+            //    EMPNO = int.Parse(inp_no.Text)
+            //};
+            edvm.AddData(evm);
             edvm.GenerateData();
         }
 

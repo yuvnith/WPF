@@ -1,0 +1,6 @@
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\ServiceLocator\bin\Debug\ServiceLocator.exe.config
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\ServiceLocator\bin\Debug\ServiceLocator.exe
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\ServiceLocator\bin\Debug\ServiceLocator.pdb
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\ServiceLocator\obj\Debug\ServiceLocator.csproj.CoreCompileInputs.cache
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\ServiceLocator\obj\Debug\ServiceLocator.exe
+C:\Users\vamshikrishna.pabba\source\repos\WPF\source\repos\WpfPractise\ServiceLocator\obj\Debug\ServiceLocator.pdb

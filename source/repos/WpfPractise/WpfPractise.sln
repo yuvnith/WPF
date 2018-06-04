@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmpDeptMVVM", "EmpDeptMVVM\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveGrid1", "..\..\..\..\SaveGrid1\SaveGrid1\SaveGrid1.csproj", "{708C1E25-4434-4CFF-88F7-7BA0EF72A34D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjection", "DependencyInjection\DependencyInjection.csproj", "{7534BFB5-AC70-4CAD-B6B9-15250A589B8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLocator", "ServiceLocator\ServiceLocator.csproj", "{198DA3EE-E90D-4D27-B65F-3580D937AEFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{708C1E25-4434-4CFF-88F7-7BA0EF72A34D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{708C1E25-4434-4CFF-88F7-7BA0EF72A34D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{708C1E25-4434-4CFF-88F7-7BA0EF72A34D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7534BFB5-AC70-4CAD-B6B9-15250A589B8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7534BFB5-AC70-4CAD-B6B9-15250A589B8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7534BFB5-AC70-4CAD-B6B9-15250A589B8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7534BFB5-AC70-4CAD-B6B9-15250A589B8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{198DA3EE-E90D-4D27-B65F-3580D937AEFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{198DA3EE-E90D-4D27-B65F-3580D937AEFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{198DA3EE-E90D-4D27-B65F-3580D937AEFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{198DA3EE-E90D-4D27-B65F-3580D937AEFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
