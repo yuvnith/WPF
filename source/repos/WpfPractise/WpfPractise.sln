@@ -27,6 +27,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjection", "Depe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLocator", "ServiceLocator\ServiceLocator.csproj", "{198DA3EE-E90D-4D27-B65F-3580D937AEFE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridToExcel", "GridToExcel\GridToExcel.csproj", "{5EA94655-A6A6-464F-891F-91C1898164B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wcf", "wcf", "{FFBB29A5-99B5-4A3A-8E82-CE8FCB1D4C64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoWcfClient", "DemoWcfClient\DemoWcfClient.csproj", "{DD8DA9E3-D5E7-4397-B90E-0789A44A84CD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8A1E8ED3-A667-4672-8FF1-0655A3791470} = {8A1E8ED3-A667-4672-8FF1-0655A3791470}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceLibrary1", "WcfServiceLibrary1\WcfServiceLibrary1.csproj", "{8A1E8ED3-A667-4672-8FF1-0655A3791470}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practise", "..\..\..\..\Practise-\Practise\Practise.csproj", "{D9387F02-48B6-4151-BDD7-4ED4F942BB57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLSQL_PACKAGES", "PLSQL_PACKAGES\PLSQL_PACKAGES.csproj", "{D3C0EB7C-D7F9-495C-8071-48EE8B969AD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,9 +96,33 @@ Global
 		{198DA3EE-E90D-4D27-B65F-3580D937AEFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{198DA3EE-E90D-4D27-B65F-3580D937AEFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{198DA3EE-E90D-4D27-B65F-3580D937AEFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EA94655-A6A6-464F-891F-91C1898164B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EA94655-A6A6-464F-891F-91C1898164B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EA94655-A6A6-464F-891F-91C1898164B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EA94655-A6A6-464F-891F-91C1898164B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD8DA9E3-D5E7-4397-B90E-0789A44A84CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD8DA9E3-D5E7-4397-B90E-0789A44A84CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD8DA9E3-D5E7-4397-B90E-0789A44A84CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD8DA9E3-D5E7-4397-B90E-0789A44A84CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A1E8ED3-A667-4672-8FF1-0655A3791470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A1E8ED3-A667-4672-8FF1-0655A3791470}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A1E8ED3-A667-4672-8FF1-0655A3791470}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A1E8ED3-A667-4672-8FF1-0655A3791470}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9387F02-48B6-4151-BDD7-4ED4F942BB57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9387F02-48B6-4151-BDD7-4ED4F942BB57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9387F02-48B6-4151-BDD7-4ED4F942BB57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9387F02-48B6-4151-BDD7-4ED4F942BB57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3C0EB7C-D7F9-495C-8071-48EE8B969AD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3C0EB7C-D7F9-495C-8071-48EE8B969AD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3C0EB7C-D7F9-495C-8071-48EE8B969AD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3C0EB7C-D7F9-495C-8071-48EE8B969AD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DD8DA9E3-D5E7-4397-B90E-0789A44A84CD} = {FFBB29A5-99B5-4A3A-8E82-CE8FCB1D4C64}
+		{8A1E8ED3-A667-4672-8FF1-0655A3791470} = {FFBB29A5-99B5-4A3A-8E82-CE8FCB1D4C64}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B84E3B1D-A92F-40D8-AE50-6846438F85AE}
